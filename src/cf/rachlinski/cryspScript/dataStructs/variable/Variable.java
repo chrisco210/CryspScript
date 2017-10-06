@@ -9,7 +9,7 @@ public class Variable<E>
 	/**
 	 * The value of the variable
 	 */
-	private E value;
+	protected E value;
 
 	/**
 	 * Construct a new variable of given type
@@ -22,7 +22,7 @@ public class Variable<E>
 
 	/**
 	 * Return the value of the variable
-	 * @return
+	 * @return the value of the variable
 	 */
 	public E getValue()
 	{

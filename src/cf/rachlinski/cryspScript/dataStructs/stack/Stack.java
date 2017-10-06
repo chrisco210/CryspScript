@@ -9,18 +9,18 @@ import java.util.Iterator;
  * Superclass for all stack data structures
  *
  */
-public class Stack	implements Iterable<Variable<?>>
+public class Stack<E>	implements Iterable<E>
 {
 	/**
 	 * Stack of Variables to store
 	 */
-	protected Variable<?>[] contents;
+	protected E[] contents;
 
 	/**
 	 * Construct a new Stack object given contents
 	 * @param contents the array of {@code Variable<?>}s to initialize
 	 */
-	public Stack(Variable<?>[] contents)
+	public Stack(E[] contents)
 	{
 		this.contents = contents;
 	}
@@ -48,7 +48,7 @@ public class Stack	implements Iterable<Variable<?>>
 	 * Return the entire stack of Variables
 	 * @return the entire stack of variables
 	 */
-	public Variable<?>[] getContents()
+	public E[] getContents()
 	{
 		return contents;
 	}
@@ -58,12 +58,12 @@ public class Stack	implements Iterable<Variable<?>>
 	 * @param index the index of the variable
 	 * @return the variable at specified index
 	 */
-	public Variable<?> get(int index)
+	public E get(int index)
 	{
 		return contents[index];
 	}
 
-	public Iterator<Variable<?>> iterator()
+	public Iterator<E> iterator()
 	{
 		return Arrays.asList(contents).iterator();
 	}
