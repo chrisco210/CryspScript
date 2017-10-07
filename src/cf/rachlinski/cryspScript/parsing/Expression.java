@@ -31,9 +31,7 @@ public class Expression implements Evaluable
 		//TODO This is broken, will not work, fix
 		for(int i = 0; i < s.size(); i += 2)
 		{
-			int tempSum = ((Operator) s.get(i + 1)).op(((Token)s.get(i)).eval(), ((Token) s.get(i + 2)).eval());		//Evaluate the operator and tokens
-			s.set(i + 2, new Token(tempSum, Operator.ADD, 0));		//We need to add the result of the previous operation to the next slot that will be added
-
+			sum = ((Operator) s.get(i + 1)).op(s.get(i), s.get(i + 2));
 		}
 
 		return sum;
