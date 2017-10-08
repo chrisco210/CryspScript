@@ -3,7 +3,7 @@ package cf.rachlinski.cryspScript.parsing;
 /**
  * Enum containing operators
  */
-public enum Operator
+public enum Operator implements ExpressionComponent
 {
 	ADD,
 	SUB,
@@ -34,6 +34,11 @@ public enum Operator
 		}
 
 		throw new RuntimeException("Case not found.");
+	}
+
+	public int type()
+	{
+		return ExpressionComponent.OPERATOR;
 	}
 
 }

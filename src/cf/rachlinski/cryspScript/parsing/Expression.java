@@ -31,7 +31,7 @@ public class Expression implements Evaluable
 		//TODO This is broken, will not work, fix
 		for(int i = 0; i < s.size(); i += 2)
 		{
-			sum = ((Operator) s.get(i + 1)).op(s.get(i), s.get(i + 2));
+
 		}
 
 		return sum;

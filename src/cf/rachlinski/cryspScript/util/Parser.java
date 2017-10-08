@@ -1,6 +1,6 @@
 package cf.rachlinski.cryspScript.util;
 
-public abstract class Parser
+public abstract class Parser<E>
 {
-	public abstract <E> E parse(String args);
+	public abstract E parse(String args);
 }

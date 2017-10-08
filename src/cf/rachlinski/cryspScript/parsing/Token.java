@@ -3,7 +3,7 @@ package cf.rachlinski.cryspScript.parsing;
 /**
  * A evaluable token
  */
-public class Token implements Evaluable
+public class Token implements Evaluable, ExpressionComponent
 {
 	private Operator operator;
 	private int leftOp;
@@ -25,5 +25,10 @@ public class Token implements Evaluable
 	public int eval()
 	{
 		return operator.op(leftOp, rightOp);
+	}
+
+	public int type()
+	{
+		return ExpressionComponent.EVALUABLE;
 	}
 }

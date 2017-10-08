@@ -5,9 +5,9 @@ import java.util.LinkedList;
 /**
  * Represents a sequence of tokens and operators to be evaluated
  */
-public class TokenSequence implements Evaluable
+public class TokenSequence
 {
-	private LinkedList<Object> links;
+	private LinkedList<ExpressionComponent> links;
 	private boolean shouldBeTokenOrNum;
 
 	/**
@@ -16,39 +16,32 @@ public class TokenSequence implements Evaluable
 	public TokenSequence()
 	{
 		shouldBeTokenOrNum = false;
-		links = new LinkedList<Object>();
+		links = new LinkedList<ExpressionComponent>();
 	}
 
 	/**
-	 * Add something to the end of the list, with alternating tokens and operators
-	 * @param o the item to add
-	 * @throws IllegalArgumentException if the alternating sequence of tokens and operators is broken
+	 * Add something to the end of the list, with alternating evaluable and operators.
+	 * If an evaluable is added with an evaluable preceding it, a multiplication operator will be placed in between
+	 * If two operators are added next to each other, a zero will be placed in between them
+	 * @param c the item to add
 	 */
-	public <E> void add(E o)
+	public void add(ExpressionComponent c)
 	{
-		//Check if the object is a token
-		if(shouldBeTokenOrNum && (o instanceof Token))
-		{
-			links.add(o);
-			return;
-		}
+		if()
 
-		//Check if the object is an operator
-		if(!shouldBeTokenOrNum && (o instanceof Operator))
-		{
-			links.add(o);
-			return;
-		}
-
-		throw new IllegalArgumentException("Could not find a way to include the specified object.");
 	}
 
 	/**
 	 * Return the list of tokens and operators
+	 * If the list ends with an operator, a zero will be appended to the end of the list
+	 * If {@code links.size() % 3 == 0}, a + 0 will be appended to the end
 	 * @return the list of tokens and operators
 	 */
-	public LinkedList<Object> getLinks()
+	public LinkedList<ExpressionComponent> getLinks()
 	{
+		if(links.getLast().type() == ExpressionComponent.OPERATOR)
+			links.
+
 		return links;
 	}
 
@@ -59,10 +52,5 @@ public class TokenSequence implements Evaluable
 	public int size()
 	{
 		return links.size();
-	}
-
-	public int eval()
-	{
-		return 0;
 	}
 }

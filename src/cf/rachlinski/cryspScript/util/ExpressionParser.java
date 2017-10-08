@@ -1,16 +1,16 @@
 package cf.rachlinski.cryspScript.util;
 
-public class ExpressionParser extends Parser
+import cf.rachlinski.cryspScript.parsing.Expression;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+
+public class ExpressionParser extends Parser<Expression>
 {
-	public <E> E parse(String args)
+
+	@Override
+	public Expression parse(String args)
 	{
-		String[] s = args.split(" ");
-
-		for(int i = 0; i < s.length; i++)
-		{
-
-		}
-
 		return null;
 	}
 }
