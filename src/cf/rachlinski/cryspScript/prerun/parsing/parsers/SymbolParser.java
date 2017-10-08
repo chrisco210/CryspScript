@@ -4,14 +4,53 @@ import cf.rachlinski.cryspScript.prerun.parsing.ExpressionComponent;
 import cf.rachlinski.cryspScript.prerun.parsing.Operator;
 import cf.rachlinski.cryspScript.prerun.parsing.Symbol;
 
-public class SymbolParser extends Parser<ExpressionComponent>
+/**
+ * Class containing Operator and number parsers
+ */
+public class SymbolParser
 {
-	@Override
-	public ExpressionComponent parse(String args)
-	{
-		args = args.trim();
+	private NumberParser numberParser;
+	private OperatorParser operatorParser;
 
-		if(args.matches("/^(\\\\+|\\\\*|/|-)"))
+	/**
+	 * Return the number parser
+	 * @return the number parser
+	 */
+	public NumberParser getNumberParser()
+	{
+		return numberParser;
+	}
+
+	/**
+	 * Return the Operation parser
+	 * @return the operation parser
+	 */
+	public OperatorParser getOperatorParser()
+	{
+		return operatorParser;
+	}
+
+	/**
+	 * Inner class for parsing number symbols
+	 */
+	protected class NumberParser extends Parser<Symbol>
+	{
+
+		@Override
+		public Symbol parse(String args)
+		{
+			return new Symbol(Integer.parseInt(args));
+		}
+	}
+
+	/**
+	 * Inner class for parsing Operator symbols
+	 */
+	protected class OperatorParser extends Parser<Operator>
+	{
+
+		@Override
+		public Operator parse(String args)
 		{
 			switch(args)
 			{
@@ -26,10 +65,6 @@ public class SymbolParser extends Parser<ExpressionComponent>
 			default:
 				return Operator.ADD;
 			}
-		}
-		else
-		{
-			return new Symbol(Integer.parseInt(args));
 		}
 	}
 }

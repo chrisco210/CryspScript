@@ -27,7 +27,16 @@ public class TokenSequence
 	 */
 	public void add(ExpressionComponent c)
 	{
-		if()
+		links.add(c);
+	}
+
+	/**
+	 * Sort the tokens by order of operations
+	 */
+	public void sort()
+	{
+		LinkedList<ExpressionComponent> tempLinks = new LinkedList<ExpressionComponent>();
+
 
 	}
 

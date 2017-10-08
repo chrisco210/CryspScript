@@ -22,6 +22,15 @@ public class Token implements Evaluable, ExpressionComponent
 		this.operator = op;
 	}
 
+	/**
+	 * Return the operator used in the token
+	 * @return the operator used in the token
+	 */
+	public Operator getOperator()
+	{
+		return operator;
+	}
+
 	public int eval()
 	{
 		return operator.op(leftOp.getValue(), rightOp.getValue());

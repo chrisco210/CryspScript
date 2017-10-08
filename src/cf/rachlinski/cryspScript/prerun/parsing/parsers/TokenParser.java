@@ -12,8 +12,15 @@ public class TokenParser extends Parser<Token>
 	@Override
 	public Token parse(String args)
 	{
+		SymbolParser symbolParser = new SymbolParser();		//Symbol parser for later use
+
 		args = args.trim();
 		String[] s = args.split(" ");		//Array of potential tokens
+
+		if(s.length == 1)
+		{
+			return new Token(symbolParser.getNumberParser().parse(s[0]), Operator.ADD, new Symbol(0));
+		}
 
 		//Make sure that there are not too many items in the sequence
 		if(s.length > MAX_TOKEN_LENGTH)
@@ -23,11 +30,9 @@ public class TokenParser extends Parser<Token>
 
 		ExpressionComponent[] components = new ExpressionComponent[3];
 
-		SymbolParser symbolParser = new SymbolParser();
-		for(int i = 0; i < MAX_TOKEN_LENGTH; i++)
-		{
-			components[i] = symbolParser.parse(s[i]);
-		}
+		components[0] = symbolParser.getNumberParser().parse(s[0]);
+		components[1] = symbolParser.getOperatorParser().parse(s[1]);
+		components[2] = symbolParser.getOperatorParser().parse(s[2]);
 
 
 		try
