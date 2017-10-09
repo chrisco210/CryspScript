@@ -1,6 +1,5 @@
 package cf.rachlinski.cryspScript.prerun.parsing.expression;
 
-
 /**
  * Class for containing a number symbol in an evaluable expression
  */
