@@ -12,6 +12,12 @@ public class SymbolParser
 	private NumberParser numberParser;
 	private OperatorParser operatorParser;
 
+	public SymbolParser()
+	{
+		numberParser = new NumberParser();
+		operatorParser = new OperatorParser();
+	}
+
 	/**
 	 * Return the number parser
 	 * @return the number parser
@@ -35,7 +41,6 @@ public class SymbolParser
 	 */
 	protected class NumberParser extends Parser<Symbol>
 	{
-
 		@Override
 		public Symbol parse(String args)
 		{

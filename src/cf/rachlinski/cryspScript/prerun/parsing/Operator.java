@@ -5,11 +5,11 @@ package cf.rachlinski.cryspScript.prerun.parsing;
  */
 public enum Operator implements ExpressionComponent
 {
-	ADD,
-	SUB,
 	MUL,
 	DIV,
-	MOD;
+	MOD,
+	ADD,
+	SUB;
 
 	/**
 	 * Perform the operation specified by the enum
