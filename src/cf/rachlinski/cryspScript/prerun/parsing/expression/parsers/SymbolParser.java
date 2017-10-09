@@ -1,5 +1,6 @@
 package cf.rachlinski.cryspScript.prerun.parsing.expression.parsers;
 
+import cf.rachlinski.cryspScript.prerun.parsing.Parser;
 import cf.rachlinski.cryspScript.prerun.parsing.expression.Operator;
 import cf.rachlinski.cryspScript.prerun.parsing.expression.Symbol;
 

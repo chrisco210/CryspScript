@@ -1,0 +1,8 @@
+language: java
+before_install: true
+install: mvn install
+before_script: true
+script: mvn package
+after_success: mvn test
+after_failure: mvn test
+after_scritpt: mvn test

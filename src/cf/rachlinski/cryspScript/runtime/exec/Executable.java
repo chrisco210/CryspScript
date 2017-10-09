@@ -6,12 +6,6 @@ package cf.rachlinski.cryspScript.runtime.exec;
 public interface Executable
 {
 	/**
-	 *
-	 * @param text
-	 */
-	void parse(String text);
-
-	/**
 	 * Run the command
 	 */
 	void run();
