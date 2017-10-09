@@ -1,4 +1,4 @@
-package cf.rachlinski.cryspScript.prerun.parsing;
+package cf.rachlinski.cryspScript.prerun.parsing.expression;
 
 /**
  * Enum containing operators

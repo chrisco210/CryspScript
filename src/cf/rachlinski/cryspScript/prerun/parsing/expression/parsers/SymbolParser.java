@@ -1,8 +1,7 @@
-package cf.rachlinski.cryspScript.prerun.parsing.parsers;
+package cf.rachlinski.cryspScript.prerun.parsing.expression.parsers;
 
-import cf.rachlinski.cryspScript.prerun.parsing.ExpressionComponent;
-import cf.rachlinski.cryspScript.prerun.parsing.Operator;
-import cf.rachlinski.cryspScript.prerun.parsing.Symbol;
+import cf.rachlinski.cryspScript.prerun.parsing.expression.Operator;
+import cf.rachlinski.cryspScript.prerun.parsing.expression.Symbol;
 
 /**
  * Class containing Operator and number parsers

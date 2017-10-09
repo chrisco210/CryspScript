@@ -1,6 +1,6 @@
 package cf.rachlinski.cryspScriptTest;
 
-import cf.rachlinski.cryspScript.prerun.parsing.parsers.ExpressionParser;
+import cf.rachlinski.cryspScript.prerun.parsing.expression.parsers.ExpressionParser;
 
 public class ExpressionTester
 {

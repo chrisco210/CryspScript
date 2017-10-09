@@ -1,4 +1,4 @@
-package cf.rachlinski.cryspScript.prerun.parsing.parsers;
+package cf.rachlinski.cryspScript.prerun.parsing.expression.parsers;
 
 public abstract class Parser<E>
 {

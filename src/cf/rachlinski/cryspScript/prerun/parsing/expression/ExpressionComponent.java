@@ -1,4 +1,4 @@
-package cf.rachlinski.cryspScript.prerun.parsing;
+package cf.rachlinski.cryspScript.prerun.parsing.expression;
 
 /**
  * Interface to tag items that can be used in expressions

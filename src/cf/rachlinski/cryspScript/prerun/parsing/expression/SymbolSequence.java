@@ -1,7 +1,6 @@
-package cf.rachlinski.cryspScript.prerun.parsing;
+package cf.rachlinski.cryspScript.prerun.parsing.expression;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 /**
  * Represents a sequence of symbols and operators to be evaluated

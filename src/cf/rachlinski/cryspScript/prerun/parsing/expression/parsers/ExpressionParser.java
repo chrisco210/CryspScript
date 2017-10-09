@@ -1,6 +1,8 @@
-package cf.rachlinski.cryspScript.prerun.parsing.parsers;
+package cf.rachlinski.cryspScript.prerun.parsing.expression.parsers;
 
-import cf.rachlinski.cryspScript.prerun.parsing.*;
+import cf.rachlinski.cryspScript.prerun.parsing.expression.Expression;
+import cf.rachlinski.cryspScript.prerun.parsing.expression.ExpressionComponent;
+import cf.rachlinski.cryspScript.prerun.parsing.expression.SymbolSequence;
 
 import java.util.ArrayList;
 import java.util.Arrays;
