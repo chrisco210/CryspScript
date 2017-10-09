@@ -22,4 +22,15 @@ public class SymbolSequence
 	{
 		return links;
 	}
+
+	@Override
+	public String toString()
+	{
+		StringBuilder sb = new StringBuilder();
+
+		for(ExpressionComponent s : links)
+			sb.append(s.toString());
+
+		return sb.toString();
+	}
 }

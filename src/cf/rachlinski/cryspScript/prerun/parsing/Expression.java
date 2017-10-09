@@ -26,6 +26,8 @@ public class Expression implements Evaluable
 
 		ArrayList<ExpressionComponent> syms = sequence.getLinks();
 
+		System.out.println(syms);		//TODO DEBUG
+
 		for(int j = 0; j < ExpressionParser.NUM_OPS; j++)
 		{
 			for(int i = 1; i < syms.size(); i += 2)
@@ -42,5 +44,11 @@ public class Expression implements Evaluable
 		}
 
 		return ((Symbol) syms.get(0)).getValue();
+	}
+
+	@Override
+	public String toString()
+	{
+		return "Expression{" + sequence + "}";
 	}
 }

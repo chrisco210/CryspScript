@@ -64,7 +64,7 @@ public class SymbolParser
 			case "-":
 				return Operator.SUB;
 			case "/":
-				return Operator.SUB;
+				return Operator.DIV;
 			case "*":
 				return Operator.MUL;
 			default:

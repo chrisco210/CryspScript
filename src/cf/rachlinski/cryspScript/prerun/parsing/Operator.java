@@ -41,4 +41,23 @@ public enum Operator implements ExpressionComponent
 		return ExpressionComponent.OPERATOR;
 	}
 
+
+	@Override
+	public String toString()
+	{
+		switch(this)
+		{
+		case ADD:
+			return "+";
+		case SUB:
+			return "-";
+		case MUL:
+			return "*";
+		case DIV:
+			return "/";
+		case MOD:
+			return "%";
+		}
+		return "not found";
+	}
 }

@@ -31,4 +31,10 @@ public class Symbol implements ExpressionComponent
 	{
 		return ExpressionComponent.SYMBOL;
 	}
+
+	@Override
+	public String toString()
+	{
+		return Integer.toString(value);
+	}
 }
