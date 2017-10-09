@@ -48,7 +48,6 @@ public class ExpressionParser extends Parser<Expression>
 	@Override
 	public Expression parse(String args)
 	{
-		System.out.println(args);		//TODO DEBUG
 		args = args.trim();
 		ArrayList<String> s = new ArrayList<String>(args.split(" ").length);
 		s.addAll(Arrays.asList(args.split(" ")));
@@ -70,11 +69,6 @@ public class ExpressionParser extends Parser<Expression>
 				symbolList[i] = symbolParser.getNumberParser().parse(s.get(i));
 			}
 		}
-
-		for(ExpressionComponent ex : symbolList)		//TODO DEBUG
-			System.out.print(ex);
-		System.out.println();
-
 		return new Expression(new SymbolSequence(new ArrayList<>(Arrays.asList(symbolList))));
 	}
 }

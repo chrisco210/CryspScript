@@ -67,6 +67,8 @@ public class SymbolParser
 				return Operator.DIV;
 			case "*":
 				return Operator.MUL;
+			case "%":
+				return Operator.MOD;
 			default:
 				return Operator.ADD;
 			}

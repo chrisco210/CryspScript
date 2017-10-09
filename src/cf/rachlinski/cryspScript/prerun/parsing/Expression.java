@@ -26,7 +26,6 @@ public class Expression implements Evaluable
 
 		ArrayList<ExpressionComponent> syms = sequence.getLinks();
 
-		System.out.println(syms);		//TODO DEBUG
 
 		for(int j = 0; j < ExpressionParser.NUM_OPS; j++)
 		{
