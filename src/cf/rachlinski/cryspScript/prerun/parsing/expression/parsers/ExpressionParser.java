@@ -52,8 +52,44 @@ public class ExpressionParser extends Parser<Expression>
 	public Expression parse(String args)
 	{
 		args = args.trim();
-		ArrayList<String> s = new ArrayList<String>(args.split(" ").length);
-		s.addAll(Arrays.asList(args.split(" ")));
+
+		int num = 1;
+		for(int i = 0; i < args.length(); i++)
+		{
+			if(args.charAt(i) == '+'
+					|| args.charAt(i) == '-'
+					|| args.charAt(i) == '*'
+					|| args.charAt(i) == '/'
+					|| args.charAt(i) == '%'
+					)
+			{
+				num += 2;
+			}
+		}
+
+		ArrayList<String> s = new ArrayList<String>(num);
+		int lastLoc = 0;
+		for(int i = 0; i < args.length(); i++)
+		{
+			if(i == args.length() - 1)
+			{
+				s.add(args.substring(lastLoc, i + 1));
+			}
+
+			if(args.charAt(i) == '+'
+					|| args.charAt(i) == '-'
+					|| args.charAt(i) == '*'
+					|| args.charAt(i) == '/'
+					|| args.charAt(i) == '%'
+					)
+			{
+				s.add(args.substring(lastLoc, i ));
+				s.add(Character.toString(args.charAt(i)));
+				lastLoc = i + 1;
+			}
+		}
+		//s.addAll(Arrays.asList(args.split(" ")));
+		System.out.println(s);
 
 		//ArrayList<ExpressionComponent> symbolList = new ArrayList<>(s.size());
 

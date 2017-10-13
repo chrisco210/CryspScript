@@ -44,6 +44,7 @@ public class SymbolParser
 		@Override
 		public Symbol parse(String args)
 		{
+			args = args.trim();
 			return new Symbol(Integer.parseInt(args));
 		}
 	}

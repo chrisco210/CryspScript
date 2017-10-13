@@ -14,15 +14,6 @@ public class ExpressionTester
 
 		ExpressionParser parser = new ExpressionParser();
 
-		long parseStartTime = System.nanoTime();
-		int res = parser.parse("10 + 2 * 3 - 50 % 3").eval();
-		long parseEndTime = System.nanoTime();
-
-		long javaStartTime = System.nanoTime();
-		int res2 = 10 + 2 * 3 - 50 % 3;
-		long javaEndTime = System.nanoTime();
-
-		System.out.println(parseEndTime - parseStartTime);
-		System.out.println(javaEndTime - javaStartTime);
+		System.out.println("1 + 52 / 3 = " + parser.parse("1+	52      /3").eval());
 	}
 }
