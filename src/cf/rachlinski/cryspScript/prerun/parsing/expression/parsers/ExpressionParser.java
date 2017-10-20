@@ -108,6 +108,6 @@ public class ExpressionParser extends Parser<Expression>
 				symbolList[i] = symbolParser.getNumberParser().parse(s.get(i));
 			}
 		}
-		return new Expression(new SymbolSequence(new ArrayList<>(Arrays.asList(symbolList))));
+		return new Expression(new SymbolSequence(new ArrayList<ExpressionComponent>(Arrays.asList(symbolList))));
 	}
 }

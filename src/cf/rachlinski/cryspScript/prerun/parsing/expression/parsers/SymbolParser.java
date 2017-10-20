@@ -58,6 +58,19 @@ public class SymbolParser
 		@Override
 		public Operator parse(String args)
 		{
+			if(args.equals("+"))
+				return Operator.ADD;
+			else if(args.equals("-"))
+				return Operator.SUB;
+			else if(args.equals("/"))
+				return Operator.DIV;
+			else if(args.equals("*"))
+				return Operator.MUL;
+			else if(args.equals("%"))
+				return Operator.MOD;
+			else
+				return Operator.ADD;		//TODO Create OperatorNotFound exception
+			/*
 			switch(args)
 			{
 			case "+":
@@ -73,6 +86,7 @@ public class SymbolParser
 			default:
 				return Operator.ADD;
 			}
+			*/
 		}
 	}
 }
