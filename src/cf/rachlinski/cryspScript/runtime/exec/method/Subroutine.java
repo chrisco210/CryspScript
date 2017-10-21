@@ -3,6 +3,7 @@ package cf.rachlinski.cryspScript.runtime.exec.method;
 import cf.rachlinski.cryspScript.runtime.codeAccessors.Registers;
 import cf.rachlinski.cryspScript.runtime.dataStructs.stack.PrecondensedLineStack;
 import cf.rachlinski.cryspScript.runtime.dataStructs.variable.InstructionPointer;
+import cf.rachlinski.cryspScript.runtime.exec.Executable;
 
 /**
  * Superclass for functions and routines
@@ -29,7 +30,7 @@ public class Subroutine
 	public Subroutine(InstructionPointer startPtr, InstructionPointer returnPtr)
 	{
 		entryLoc = startPtr;
-		returnLoc = returnPt;
+		returnLoc = returnPtr;
 	}
 	
 	/**

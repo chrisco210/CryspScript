@@ -10,4 +10,13 @@ public final class ScriptEngine
 	{
 
 	}
+
+	/**
+	 * Parses a string and executes a command based on that string.  Useful for implementing a REPL command interpreter
+	 * @param text the text to parse
+	 */
+	public void parse(String text)
+	{
+		//TODO
+	}
 }

@@ -29,6 +29,36 @@ public class Variable<E>
 		return value;
 	}
 
+	/**
+	 * Return the type of the variable
+	 * @return the type of the variable
+	 */
+	public Class<?> getType()
+	{
+		return value.getClass();
+	}
+
+	/**
+	 * Check if the variable is of a certain type
+	 * @param clazz the type to compare to
+	 * @return if the variable is of type class
+	 */
+	public boolean typeof(Class<?> clazz)
+	{
+		return value.getClass().equals(clazz);
+	}
+
+	/**
+	 * Check if the variable is of a certain type, given an instance of a type
+	 * @param instance the instance of a class to compare to
+	 * @param <T> the type of the instance
+	 * @return if the variable is of type instance
+	 */
+	public <T> boolean typeof(T instance)
+	{
+		return value.getClass().equals(instance.getClass());
+	}
+
 	@Override
 	public String toString()
 	{

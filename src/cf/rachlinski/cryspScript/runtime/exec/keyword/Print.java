@@ -6,6 +6,8 @@ import cf.rachlinski.cryspScript.runtime.dataStructs.variable.Variable;
 
 /**
  * Print output to standard output
+ * Syntax <br>
+ * print {to_print}
  */
 public class Print extends Keyword
 {
@@ -19,9 +21,6 @@ public class Print extends Keyword
 	{
 		StringBuffer buff = new StringBuffer();
 
-		for(Variable<?> v : args)
-			buff.append(v.toString());
-
-		System.out.println(buff.toString());
+		System.out.println(args.get(0));
 	}
 }
