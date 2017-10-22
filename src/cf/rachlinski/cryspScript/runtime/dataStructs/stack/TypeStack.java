@@ -23,4 +23,5 @@ public class TypeStack extends Stack<Class<?>>
 
 		return correctTypes;
 	}
+
 }

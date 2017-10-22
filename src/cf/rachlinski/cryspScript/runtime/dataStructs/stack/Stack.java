@@ -10,13 +10,13 @@ import java.util.Iterator;
 public class Stack<E>	implements Iterable<E>
 {
 	/**
-	 * Stack of Variables to store
+	 * Stack of E to store
 	 */
 	protected E[] contents;
 
 	/**
 	 * Construct a new Stack object given contents
-	 * @param contents the array of {@code Variable<?>}s to initialize
+	 * @param contents
 	 */
 	public Stack(E[] contents)
 	{
@@ -43,8 +43,8 @@ public class Stack<E>	implements Iterable<E>
 	}
 
 	/**
-	 * Return the entire stack of Variables
-	 * @return the entire stack of variables
+	 * Return the entire stack of E
+	 * @return the entire stack of E
 	 */
 	public E[] getContents()
 	{
@@ -52,13 +52,41 @@ public class Stack<E>	implements Iterable<E>
 	}
 
 	/**
-	 * Return the Variable at the specified index
-	 * @param index the index of the variable
+	 * Return the E at the specified index
+	 * @param index the index of the E
 	 * @return the variable at specified index
 	 */
 	public E get(int index)
 	{
 		return contents[index];
+	}
+
+	@Override
+	public String toString()
+	{
+		StringBuilder sb = new StringBuilder();
+
+		for(E c : contents)
+		{
+			sb.append(c.toString() + ", ");
+		}
+		return "Stack [" + sb.toString() + "]";
+	}
+
+	/**
+	 * Return the types of all of the contents of the stack as a string
+	 * @return the types of the contents of teh stack as a string
+	 */
+	public String typesToString()
+	{
+		StringBuilder sb = new StringBuilder();
+
+		for(E c : contents)
+		{
+			sb.append(c.getClass().toString() + ", ");
+		}
+
+		return "StackTypes [" + sb.toString() + "]";
 	}
 
 	public Iterator<E> iterator()
