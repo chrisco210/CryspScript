@@ -1,5 +1,7 @@
 package cf.rachlinski.cryspScript.runtime.dataStructs.stack;
 
+import cf.rachlinski.cryspScript.runtime.dataStructs.variable.Variable;
+
 import java.util.Arrays;
 import java.util.Iterator;
 
@@ -81,9 +83,19 @@ public class Stack<E>	implements Iterable<E>
 	{
 		StringBuilder sb = new StringBuilder();
 
-		for(E c : contents)
+		if(contents instanceof Variable<?>[])
 		{
-			sb.append(c.getClass().toString() + ", ");
+			for(E c : contents)
+			{
+				sb.append(((Variable<?>) c).getType().toString() + ", ");
+			}
+		}
+		else
+		{
+			for(E c : contents)
+			{
+				sb.append(c.getClass().toString() + ", ");
+			}
 		}
 
 		return "StackTypes [" + sb.toString() + "]";

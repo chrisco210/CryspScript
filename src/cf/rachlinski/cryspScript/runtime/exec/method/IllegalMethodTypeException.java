@@ -10,7 +10,7 @@ public class IllegalMethodTypeException extends Error
 {
 	public IllegalMethodTypeException(TypeStack expected, ParameterStack received)
 	{
-		super("Invalid method parameter types supplied. Expected: " + expected + "Received: " + received.typesToString());
+		super("Invalid method parameter types supplied.\n Expected: " + expected + "Received: " + received.typesToString());
 	}
 
 	public IllegalMethodTypeException()
