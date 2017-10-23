@@ -18,9 +18,9 @@ public class If extends Keyword
 	 * @param correctArgs the arguments to
 	 * @throws IllegalMethodTypeException if the number of parameters supplied does not match the argument count
 	 */
-	public If(ParameterStack args, TypeStack correctArgs) throws IllegalMethodTypeException
+	public If(ParameterStack args) throws IllegalMethodTypeException
 	{
-		super(args, correctArgs);
+		super(args, EXPECTED_TYPES);
 	}
 
 	@Override

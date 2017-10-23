@@ -16,7 +16,7 @@ public class ExecutionTester
 										new Variable<?>[]
 												{
 														new Variable<String>("Yahta Yahta Yahta"),
-														new Variable<>(5)
+														new Variable<Integer>(5)
 												}
 								)
 						),

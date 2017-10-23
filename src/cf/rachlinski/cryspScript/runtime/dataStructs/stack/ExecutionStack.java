@@ -1,5 +1,6 @@
 package cf.rachlinski.cryspScript.runtime.dataStructs.stack;
 
+import cf.rachlinski.cryspScript.runtime.dataStructs.variable.InstructionPointer;
 import cf.rachlinski.cryspScript.runtime.exec.Executable;
 
 public class ExecutionStack extends Stack<Executable>
@@ -12,5 +13,17 @@ public class ExecutionStack extends Stack<Executable>
 	public ExecutionStack(Executable[] contents)
 	{
 		super(contents);
+	}
+	
+	public InstructionPointer getNextOccurenceOf(Class<?> instruction)
+	{
+		int occurence = -1;
+		for(int i = 0; i < contents.length; i++)
+		{
+			if(contents[i].equals(instruction))
+				occurence = i;
+		}
+		
+		return new InstructionPointer(occurence);
 	}
 }
