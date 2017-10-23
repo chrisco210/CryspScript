@@ -19,24 +19,24 @@ Boolean literals are defined by the constants $_TRUE and $_FALSE, which are equa
 There are no object literals yet
 
 ### Operators
-..* Addition +
-..* Subtration -
-..* Mutiplcation *
-..* Division /
-..* Modulus %
-..* Call Routine _
-..* Call Function ^
-..* Access Variable Value $
-..* Specify Register %
-..* Logical Equals =
-..* Logical Not !
-..* Logical Greater Than >
-..* Logical Greater Than or Equal To >=
-..* Logical Less Than <
-..* Logical Less Than or Equal To <=
-..* Logical And &&
-..* Logical Or ||
-..* Logical XOR ^^
+  * Addition +
+  * Subtration -
+  * Mutiplcation *
+  * Division /
+  * Modulus %
+  * Call Routine _
+  * Call Function ^
+  * Access Variable Value $
+  * Specify Register %
+  * Logical Equals =
+  * Logical Not !
+  * Logical Greater Than >
+  * Logical Greater Than or Equal To >=
+  * Logical Less Than <
+  * Logical Less Than or Equal To <=
+  * Logical And &&
+  * Logical Or ||
+  * Logical XOR ^^
 
 ### Keywords Reference
 #### Control Flow
