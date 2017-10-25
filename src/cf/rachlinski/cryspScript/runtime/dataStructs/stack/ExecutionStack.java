@@ -17,13 +17,16 @@ public class ExecutionStack extends Stack<Executable>
 	
 	public InstructionPointer getNextOccurenceOf(Class<?> instruction)
 	{
-		int occurence = -1;
+		int occurrence = -1;
 		for(int i = 0; i < contents.length; i++)
 		{
 			if(contents[i].equals(instruction))
-				occurence = i;
+			{
+				occurrence = i;
+				break;
+			}
 		}
 		
-		return new InstructionPointer(occurence);
+		return new InstructionPointer(occurrence);
 	}
 }
