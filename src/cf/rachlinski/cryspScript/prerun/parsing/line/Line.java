@@ -1,5 +1,6 @@
 package cf.rachlinski.cryspScript.prerun.parsing.line;
 
+import cf.rachlinski.cryspScript.prerun.parsing.line.parameters.PrecondensedParameter;
 import cf.rachlinski.cryspScript.runtime.dataStructs.map.GlobalVariableMap;
 import cf.rachlinski.cryspScript.runtime.exec.Executable;
 
@@ -24,7 +25,7 @@ public class Line
 	 * Parameters are surrounded by {@code {curly braces}}
 	 * Parameters are seperated by {@code ,}
 	 */
-	private String[] parameters;
+	private PrecondensedParameter<?>[] parameters;
 
 	public Line(String line)
 	{
@@ -47,16 +48,6 @@ public class Line
 	public Executable parse()
 	{
 
-		return null;
-	}
-
-	/**
-	 *
-	 * @param map
-	 * @return
-	 */
-	private String evalVars(GlobalVariableMap map)
-	{
 		return null;
 	}
 }

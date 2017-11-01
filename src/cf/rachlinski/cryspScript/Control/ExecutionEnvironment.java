@@ -10,6 +10,10 @@ import cf.rachlinski.cryspScript.runtime.exec.method.IllegalMethodTypeException;
 import java.io.File;
 import java.util.LinkedList;
 
+/**
+ * Environment for execution of scripts
+ * Contains variable maps to store parameter and global variables, and an execution stack containing all instructions
+ */
 public class ExecutionEnvironment
 {
 	/**

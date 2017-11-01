@@ -6,6 +6,8 @@ package cf.rachlinski.cryspScript.runtime.dataStructs.variable;
  */
 public class Variable<E>
 {
+	public static final Variable<Integer> NULL = new Variable<>(null);
+
 	/**
 	 * The value of the variable
 	 */
