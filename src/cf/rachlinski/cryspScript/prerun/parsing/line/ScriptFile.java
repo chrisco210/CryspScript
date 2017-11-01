@@ -2,7 +2,6 @@ package cf.rachlinski.cryspScript.prerun.parsing.line;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 
 /**
  * Class representing a pre execution script, containing raw text,
@@ -28,17 +27,6 @@ public class ScriptFile
 	 * @throws IOException if an error is encountered in reading the file
 	 */
 	public ScriptFile(File f) throws IOException
-	{
-
-	}
-
-	/**
-	 * Construct an ScriptFile representing the lines of a file with a path <br>
-	 * This constructor is identical to the File constructor
-	 * @param path the path of the file to read
-	 * @throws IOException if an error is encountered in reading the file
-	 */
-	public ScriptFile(Path path) throws IOException
 	{
 
 	}

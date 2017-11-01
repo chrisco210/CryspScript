@@ -25,7 +25,7 @@ public class Line
 	 * Parameters are surrounded by {@code {curly braces}}
 	 * Parameters are seperated by {@code ,}
 	 */
-	private PrecondensedParameter<?>[] parameters;
+	private PrecondensedParameter[] parameters;
 
 	public Line(String line)
 	{
