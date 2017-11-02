@@ -34,7 +34,7 @@ public class PrecondensedParameter
 	 * Parses
 	 * @return
 	 */
-	public Variable valueOf()
+	public Variable<?> valueOf()
 	{
 		switch(evaluateType(value))
 		{
