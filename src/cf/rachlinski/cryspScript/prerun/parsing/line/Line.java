@@ -23,7 +23,7 @@ public class Line
 	/**
 	 * Parameters of the keyword. <br>
 	 * Parameters are surrounded by {@code {curly braces}}
-	 * Parameters are seperated by {@code ,}
+	 * Parameters are separated by {@code ,}
 	 */
 	private PrecondensedParameter[] parameters;
 
