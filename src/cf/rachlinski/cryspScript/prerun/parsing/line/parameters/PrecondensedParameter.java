@@ -43,7 +43,7 @@ public class PrecondensedParameter
 		{
 		case STR_TYPE:
 			value = value.replace('\"', '\u0000');
-		return new Variable<String>(value);
+			return new Variable<String>(value);
 		case CHR_TYPE:
 			value = value.replace('\'', '\u0000');
 			return new Variable<Character>(value.charAt(0));

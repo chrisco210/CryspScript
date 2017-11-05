@@ -12,6 +12,21 @@ import java.nio.CharBuffer;
 public class Line
 {
 	/**
+	 * Constant for the main function type of keyword
+	 */
+	public static final int KEYWORD = 0;
+
+	/**
+	 * Constant for the main function type of subroutine
+	 */
+	public static final int SUBROUTINE = 1;
+
+	/**
+	 * Constant for the main function type of function
+	 */
+	public static final int FUNCTION = 2;
+
+	/**
 	 * Name of the keyword (Or routine) that has been specified on the line
 	 */
 	private String keyword;
@@ -19,7 +34,7 @@ public class Line
 	/**
 	 * Specify if the thing that is being called is a routine.  If it is not, it must be a keyword
 	 */
-	private boolean isRoutine;
+	private int type;
 
 	/**
 	 * Parameters of the keyword. <br>
@@ -38,7 +53,19 @@ public class Line
 		//Check for comments, don't read them if found
 		line = line.contains(";") ? line.substring(0, line.indexOf(";") - 1) : line;
 
-
+		//Find what kind of thing the line is, be it keyword, method, blah blah blah
+		char mainType = line.charAt(0);
+		switch(mainType)
+		{
+		case '_':
+			type = SUBROUTINE;
+			break;
+		case '^':
+			type = FUNCTION;
+			break;
+		default:
+			type = KEYWORD;
+		}
 
 		//Remove the keyword to make working with parameters more easy
 		line = line.substring(line.indexOf("{")).trim();
