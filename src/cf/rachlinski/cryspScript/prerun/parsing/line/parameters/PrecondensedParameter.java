@@ -31,16 +31,21 @@ public class PrecondensedParameter
 	}
 
 	/**
-	 * Parses
-	 * @return
+	 * Returns a Variable from a precondensed parameter, from either a predicted type
+	 * (Based on context clues such as quotes or decimals), or from the data type of a
+	 * Variable
+	 * @return a Variable with a value specified by the value of the parameter at runtime
 	 */
 	public Variable<?> valueOf()
 	{
+		//TODO Evaluate variables at this point, right now does not support this
 		switch(evaluateType(value))
 		{
 		case STR_TYPE:
-			return new Variable<String>(value);
+			value = value.replace('\"', '\u0000');
+		return new Variable<String>(value);
 		case CHR_TYPE:
+			value = value.replace('\'', '\u0000');
 			return new Variable<Character>(value.charAt(0));
 		case INT_TYPE:
 			return new Variable<Integer>(Integer.parseInt(value));

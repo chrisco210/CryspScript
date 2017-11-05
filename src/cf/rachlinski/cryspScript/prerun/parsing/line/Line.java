@@ -15,6 +15,7 @@ public class Line
 	 * Name of the keyword (Or routine) that has been specified on the line
 	 */
 	private String keyword;
+
 	/**
 	 * Specify if the thing that is being called is a routine.  If it is not, it must be a keyword
 	 */
@@ -27,15 +28,22 @@ public class Line
 	 */
 	private PrecondensedParameter[] parameters;
 
+	/**
+	 * Construct a new line based on a string.  Most parsing takes place in the
+	 * constructor, so the {@code parse()} method only reads an XML file
+	 * @param line the string of text to turn into a line
+	 */
 	public Line(String line)
 	{
-		line = line.contains(";") ? line.substring(0, line.indexOf(";") - 1) : line;		//Check for comments, don't read them if found
+		//Check for comments, don't read them if found
+		line = line.contains(";") ? line.substring(0, line.indexOf(";") - 1) : line;
 
-		isRoutine = line.charAt(0) == '_'; 		//Easy way to figure out if the line is specifying a routine, as they must appear first on the line
-		keyword = line.substring(0, line.indexOf("{")).trim();		//Get the name of the function or keyword
 
-		line = line.substring(line.indexOf("{")).trim();		//Remove the keyword to make working with parameters more easy
 
+		//Remove the keyword to make working with parameters more easy
+		line = line.substring(line.indexOf("{")).trim();
+
+		//Parse parameters
 		parameters = new ParameterParser().parse(line);
 	}
 
