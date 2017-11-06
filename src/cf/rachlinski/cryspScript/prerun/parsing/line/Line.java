@@ -1,10 +1,21 @@
 package cf.rachlinski.cryspScript.prerun.parsing.line;
 
+import cf.rachlinski.cryspScript.prerun.parsing.accessors.CommandXML;
 import cf.rachlinski.cryspScript.prerun.parsing.line.parameters.PrecondensedParameter;
 import cf.rachlinski.cryspScript.runtime.dataStructs.map.GlobalVariableMap;
+import cf.rachlinski.cryspScript.runtime.dataStructs.stack.ParameterStack;
+import cf.rachlinski.cryspScript.runtime.dataStructs.variable.Variable;
 import cf.rachlinski.cryspScript.runtime.exec.Executable;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.nio.CharBuffer;
+
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
+
+import org.w3c.dom.NodeList;
 
 /**
  * Class that represents an unparsed line
@@ -82,7 +93,40 @@ public class Line
 	 */
 	public Executable parse()
 	{
+		NodeList n = CommandXML.COMMANDS_XML.getElementsByTagName("command");
+		String className = "noclassdef";
+		
+		try
+		{
+			className =  (String) XPathFactory.newInstance().newXPath().compile(
+					"/commands/command[@name='" + keyword + "']/class").evaluate(CommandXML.COMMANDS_XML, XPathConstants.STRING
+			);
+		}
+		catch (XPathExpressionException e)
+		{
+			//TODO handle exception
+		}
+		
+		try {
+			Constructor con = Class.forName(className).getConstructor(ParameterStack.class);
+			
+			Variable<?>[] v = new Variable<?>[parameters.length];
+			
+			for(int i = 0; i < v.length; i++)
+			{ 
+				v[i] = parameters[i].valueOf();
+			}
+			
+			return (Executable) con.newInstance(v);
+		} catch (SecurityException | NoSuchMethodException
+				| ClassNotFoundException | IllegalArgumentException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	
+		
 		//TODO XML FILE PARSER
-		return null;
+		return null;	
 	}
 }
