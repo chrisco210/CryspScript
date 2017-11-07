@@ -6,6 +6,7 @@ import cf.rachlinski.cryspScript.runtime.dataStructs.map.GlobalVariableMap;
 import cf.rachlinski.cryspScript.runtime.dataStructs.stack.ParameterStack;
 import cf.rachlinski.cryspScript.runtime.dataStructs.variable.Variable;
 import cf.rachlinski.cryspScript.runtime.exec.Executable;
+import cf.rachlinski.cryspScript.runtime.exec.keyword.Print;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -108,7 +109,7 @@ public class Line
 		}
 		
 		try {
-			Constructor con = Class.forName(className).getConstructor(ParameterStack.class);
+			Constructor<?> con = Class.forName(className).getConstructor(ParameterStack.class);
 			
 			Variable<?>[] v = new Variable<?>[parameters.length];
 			
@@ -123,10 +124,6 @@ public class Line
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-	
-		
-		//TODO XML FILE PARSER
-		return null;	
+		return new Print(new ParameterStack(new Variable<?>[] {new Variable<String>("ClassNotFound")}));
 	}
 }
