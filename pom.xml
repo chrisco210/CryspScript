@@ -7,7 +7,17 @@
     <groupId>cf.rachlinski.cryspScript</groupId>
     <artifactId>CryspScript</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <layout>default</layout>
+            <url>http://repo1.maven.org/maven2/</url>
+        </repository>
+    </repositories>
+
     <build>
+        <sourceDirectory>src/</sourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -26,8 +36,28 @@
 					<include>LICENSE</include>				
 				</includes>
 		    </resource>
+            <resource>
+                <directory>./</directory>
+                <includes>
+                    <include>res/commands.xml</include>
+                </includes>
+            </resource>
         </resources>
     </build>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.scijava</groupId>
+            <artifactId>native-lib-loader</artifactId>
+            <version>2.2.0</version>
+        </dependency>
+    </dependencies>
 
 
 </project>

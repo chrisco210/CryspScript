@@ -1,5 +1,11 @@
 package cf.rachlinski.cryspScript.prerun.parsing.expression;
 
+
+import org.apache.commons.lang3.SystemUtils;
+import org.scijava.nativelib.NativeLoader;
+
+import java.io.IOException;
+
 /**
  * Enum containing operators
  */
@@ -15,6 +21,30 @@ public enum Operator implements ExpressionComponent
 	NATIVE_ADD;
 
 	private native int add(int a, int b);
+	private native int sub(int a, int b);
+	private native int mul(int a, int b);
+	private native int div(int a, int b);
+	private native int mod(int a, int b);
+
+	//Boolean to allow JNI operators instead of java ones.
+	private static boolean ALLOW_JNI_OPS = false;
+
+	static
+	{
+		if(SystemUtils.IS_OS_WINDOWS)
+		{
+			ALLOW_JNI_OPS = true;
+			try
+			{
+				NativeLoader.loadLibrary("Operator");
+			}
+			catch (IOException e)
+			{
+				//If you get  here, we have gone terribly wrong
+				e.printStackTrace();
+			}
+		}
+	}
 
 	/**
 	 * Perform the operation specified by the enum
