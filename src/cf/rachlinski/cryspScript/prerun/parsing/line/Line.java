@@ -77,6 +77,16 @@ public class Line
 			break;
 		default:
 			type = KEYWORD;
+			break;
+		}
+
+		if(type == KEYWORD)
+		{
+			keyword = line.substring(0, line.indexOf("{")).trim();
+		}
+		else
+		{
+			keyword = line.substring(1, line.indexOf("{")).trim();
 		}
 
 		//Remove the keyword to make working with parameters more easy
@@ -94,9 +104,9 @@ public class Line
 	 */
 	public Executable parse()
 	{
-		NodeList n = CommandXML.COMMANDS_XML.getElementsByTagName("command");
+
 		String className = "noclassdef";
-		
+		System.out.println(keyword);
 		try
 		{
 			className =  (String) XPathFactory.newInstance().newXPath().compile(
@@ -109,6 +119,7 @@ public class Line
 		}
 		
 		try {
+			System.out.println(className);
 			Constructor<?> con = Class.forName(className).getConstructor(ParameterStack.class);
 			
 			Variable<?>[] v = new Variable<?>[parameters.length];
@@ -118,7 +129,7 @@ public class Line
 				v[i] = parameters[i].valueOf();
 			}
 			
-			return (Executable) con.newInstance(v);
+			return (Executable) con.newInstance(new ParameterStack(v));
 		} catch (SecurityException | NoSuchMethodException
 				| ClassNotFoundException | IllegalArgumentException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
 			// TODO Auto-generated catch block

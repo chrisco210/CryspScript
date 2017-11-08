@@ -27,20 +27,14 @@ public class CommandXML
 		{
 			COMMANDS_XML = DocumentBuilderFactory.newInstance()
 					.newDocumentBuilder()
-					.parse(CommandXML.class.getResourceAsStream("commands.xml"));
+             					.parse(CommandXML.class.getResourceAsStream("/commands.xml"));
 		}
-		catch (SAXException e)
+		catch (Exception e)		//TODO make exception type more broad, try multi catch?
 		{
+			System.err.println("Error! AOIJFIJKSDRFIGSDFGHSDFIG");
 			e.printStackTrace();
 		}
-		catch (ParserConfigurationException e)
-		{
-			e.printStackTrace();
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
+
 	}
 
 }

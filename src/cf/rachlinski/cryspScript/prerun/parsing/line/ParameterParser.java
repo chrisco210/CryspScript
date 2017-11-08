@@ -24,11 +24,14 @@ public class ParameterParser extends Parser<PrecondensedParameter[]>
 	@Override
 	public PrecondensedParameter[] parse(String args)
 	{
+		System.out.println(args);
 		args = args.trim();
 
 		args = args.charAt(0) == '{' ? args.substring(1) : args;
 		args = args.charAt(args.length() - 1) == '}' ? args.substring(0, args.length() - 1) : args;
 		args.replace(" ", "");
+
+		System.out.println(args);
 
 		String keyword;
 		int paramCount = 1;
@@ -44,14 +47,23 @@ public class ParameterParser extends Parser<PrecondensedParameter[]>
 		//There is an implied separator at 0, with location 0 index 0
 		int[] paramSepLoc = new int[paramCount + 1];
 
-		int j = 0;
-		for(int i = 1; i <= args.length(); i++)
+		paramSepLoc[0] = 0;		//Set the implied separator
+
+		if(!(args.length() <= 1))
 		{
-			if(args.charAt(i) == ',')
+			int j = 1;
+			for(int i = 1; i < args.length(); i++)
 			{
-				paramSepLoc[j] = i;
-				j++;
+				if(args.charAt(i) == ',')
+				{
+					paramSepLoc[j] = i;
+					j++;
+				}
 			}
+		}
+		else
+		{
+			paramSepLoc[1] = 1;
 		}
 
 		String[] argText = new String[paramCount];

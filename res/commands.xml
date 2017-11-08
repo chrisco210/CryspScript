@@ -1,0 +1,5 @@
+<commands>
+    <command name="print">
+        <class>cf.rachlinski.cryspScript.runtime.exec.keyword.Print</class>
+    </command>
+</commands>
