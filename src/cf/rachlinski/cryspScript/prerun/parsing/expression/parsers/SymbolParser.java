@@ -68,8 +68,13 @@ public class SymbolParser
 				return Operator.MUL;
 			else if(args.equals("%"))
 				return Operator.MOD;
+			else if(args.equals("~+"))
+				return Operator.NATIVE_ADD;
 			else
-				return Operator.ADD;		//TODO Create OperatorNotFound exception
+			{
+				System.err.println("Operator not found!");
+				return Operator.ADD;        //TODO Create OperatorNotFound exception
+			}
 			/*
 			switch(args)
 			{

@@ -5,11 +5,16 @@ package cf.rachlinski.cryspScript.prerun.parsing.expression;
  */
 public enum Operator implements ExpressionComponent
 {
+
+
 	MUL,
 	DIV,
 	MOD,
 	ADD,
-	SUB;
+	SUB,
+	NATIVE_ADD;
+
+	private native int add(int a, int b);
 
 	/**
 	 * Perform the operation specified by the enum
@@ -31,6 +36,8 @@ public enum Operator implements ExpressionComponent
 			return a / b;
 		case MOD:
 			return a % b;
+		case NATIVE_ADD:
+			return add(a, b);
 		}
 
 		throw new RuntimeException("Case not found.");
