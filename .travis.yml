@@ -1,8 +1,8 @@
 language: java
 before_install: true
-install: mvn install
+install: mvn install 
 before_script: true
-script: mvn package
+script: mvn package && ./NativeLibs/make
 after_success: mvn test
 after_failure: mvn test
 after_scritpt: mvn test
