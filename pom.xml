@@ -42,6 +42,12 @@
                     <include>res/commands.xml</include>
                 </includes>
             </resource>
+			<resource>
+				<directory>./</directory>
+				<includes>
+					<include>res/Operator.dll</include>
+				</includes>
+			</resource>
         </resources>
     </build>
 
