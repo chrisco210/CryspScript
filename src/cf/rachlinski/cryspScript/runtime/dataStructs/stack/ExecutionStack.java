@@ -1,5 +1,6 @@
 package cf.rachlinski.cryspScript.runtime.dataStructs.stack;
 
+import cf.rachlinski.cryspScript.runtime.codeAccessors.Registers;
 import cf.rachlinski.cryspScript.runtime.dataStructs.variable.InstructionPointer;
 import cf.rachlinski.cryspScript.runtime.exec.Executable;
 
@@ -14,11 +15,16 @@ public class ExecutionStack extends Stack<Executable>
 	{
 		super(contents);
 	}
-	
+
+	/**
+	 * Return an instruction pointer to the next occurrence of the specified value
+	 * @param instruction the {@code Class} object corresponding to the next instruction
+	 * @return an InstructionPointer to the next occurrence of the specified instruction
+	 */
 	public InstructionPointer getNextOccurenceOf(Class<?> instruction)
 	{
 		int occurrence = -1;
-		for(int i = 0; i < contents.length; i++)
+		for(int i = Registers.r1.getValue(); i < contents.length; i++)
 		{
 			if(contents[i].equals(instruction))
 			{
@@ -28,5 +34,15 @@ public class ExecutionStack extends Stack<Executable>
 		}
 		
 		return new InstructionPointer(occurrence);
+	}
+
+	/**
+	 * Execute the instruction at the current instruction pointer, specified by {@code Registers.r1}, and increment
+	 * the instruction pointer by 1
+	 */
+	public void exec()
+	{
+		contents[Registers.r1.getValue()].run();
+		Registers.r1.inc();
 	}
 }

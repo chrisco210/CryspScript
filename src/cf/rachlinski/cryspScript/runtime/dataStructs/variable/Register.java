@@ -27,6 +27,14 @@ public class Register extends Variable<Integer>
 	}
 
 	/**
+	 * Increment the value of the register
+	 */
+	public void inc()
+	{
+		this.value++;
+	}
+
+	/**
 	 * Copy the value of another register into this register
 	 * @param r the register to add the value to
 	 */

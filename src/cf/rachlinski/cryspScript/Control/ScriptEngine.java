@@ -6,6 +6,8 @@ package cf.rachlinski.cryspScript.Control;
 public final class ScriptEngine
 {
 
+	public static ExecutionEnvironment env;
+
 	public ScriptEngine()
 	{
 

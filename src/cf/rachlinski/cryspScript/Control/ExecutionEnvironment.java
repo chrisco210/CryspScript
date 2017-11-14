@@ -1,14 +1,17 @@
 package cf.rachlinski.cryspScript.Control;
 
+import cf.rachlinski.cryspScript.prerun.parsing.line.Line;
 import cf.rachlinski.cryspScript.runtime.dataStructs.map.GlobalVariableMap;
 import cf.rachlinski.cryspScript.runtime.dataStructs.map.InstanceVariableMap;
 import cf.rachlinski.cryspScript.runtime.dataStructs.map.Map;
 import cf.rachlinski.cryspScript.runtime.dataStructs.stack.ExecutionStack;
 import cf.rachlinski.cryspScript.runtime.dataStructs.variable.Variable;
-import cf.rachlinski.cryspScript.runtime.exec.method.IllegalMethodTypeException;
+import cf.rachlinski.cryspScript.runtime.exec.Executable;
 
-import java.io.File;
-import java.util.LinkedList;
+import java.io.*;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
 /**
  * Environment for execution of scripts
@@ -21,28 +24,46 @@ public class ExecutionEnvironment
 	 * Instance (method) variable maps are added after the global variable map
 	 */
 	private LinkedList<Map> varMaps;
-	private ExecutionStack stack;
+	public ExecutionStack executionStack;
 
 	/**
 	 *
 	 * @param globalVariableMap
 	 * @param scriptPath
+	 * @throws IOException
 	 */
-	public ExecutionEnvironment(GlobalVariableMap globalVariableMap, File scriptPath)
+	public ExecutionEnvironment(GlobalVariableMap globalVariableMap, File scriptPath) throws IOException
 	{
+		FileReader fos = new FileReader(scriptPath);
+		BufferedReader buff = new BufferedReader(fos);
+
+		String[] lines = (String[]) buff.lines()
+				.filter(n -> n.trim() != "")
+				.filter(n -> n.trim().charAt(0) != '#')
+				.toArray();
+
+		Executable[] executables = new Executable[lines.length];
+
+		for(int i = 0; i < lines.length; i++)
+		{
+			executables[i] = new Line(lines[i]).parse();
+		}			//TODO osdhngfjsdghdfotawhesrgjuiseroserpszjoihredthj
+
 
 	}
 
 	/**
 	 * Development constructor
-	 * @param stack
+	 * @param executionStack
 	 */
-	public ExecutionEnvironment(ExecutionStack stack)
+	public ExecutionEnvironment(ExecutionStack executionStack)
 	{
 		varMaps = new LinkedList<Map>();
 		varMaps.add(new GlobalVariableMap());
-		this.stack = stack;
+		this.executionStack = executionStack;
 	}
+
+	/* VARIABLE STUFF */
 
 	/**
 	 * Put a variable on the global variable map
@@ -115,7 +136,7 @@ public class ExecutionEnvironment
 	 */
 	public Variable<?> getVaraible(String name)
 	{
-		if(varMaps.get(1).contains(name))
+		if(varMaps.size() > 1 && varMaps.get(1).contains(name))
 		{
 			return varMaps.get(1).get(name);
 		}
