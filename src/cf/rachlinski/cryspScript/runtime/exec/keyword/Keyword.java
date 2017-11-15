@@ -12,6 +12,7 @@ public abstract class Keyword implements Executable
 {
 	/**
 	 * A type stack containing the correct method parameter types
+	 * @deprecated
 	 */
 	public static TypeStack EXPECTED_TYPES;
 
@@ -29,6 +30,16 @@ public abstract class Keyword implements Executable
 
 		if(!validateArgs(correctArgs))
 			throw new IllegalMethodTypeException(correctArgs, args);
+	}
+
+	/**
+	 * Construct a command given arguments
+	 * @param args the arguments to supply
+	 * @throws IllegalMethodTypeException if the number of parameters supplied does not match the argument count
+	 */
+	public Keyword(ParameterStack args) throws IllegalMethodTypeException
+	{
+		this.args = args;
 	}
 
 	/**

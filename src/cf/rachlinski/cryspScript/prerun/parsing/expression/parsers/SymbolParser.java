@@ -1,5 +1,6 @@
 package cf.rachlinski.cryspScript.prerun.parsing.expression.parsers;
 
+import cf.rachlinski.cryspScript.prerun.parsing.Except.IllegalOperatorException;
 import cf.rachlinski.cryspScript.prerun.parsing.Parser;
 import cf.rachlinski.cryspScript.prerun.parsing.expression.Operator;
 import cf.rachlinski.cryspScript.prerun.parsing.expression.Symbol;
@@ -72,26 +73,8 @@ public class SymbolParser
 				return Operator.NATIVE_ADD;
 			else
 			{
-				System.err.println("Operator not found!");
-				return Operator.ADD;        //TODO Create OperatorNotFound exception
+				throw new IllegalOperatorException();
 			}
-			/*
-			switch(args)
-			{
-			case "+":
-				return Operator.ADD;
-			case "-":
-				return Operator.SUB;
-			case "/":
-				return Operator.DIV;
-			case "*":
-				return Operator.MUL;
-			case "%":
-				return Operator.MOD;
-			default:
-				return Operator.ADD;
-			}
-			*/
 		}
 	}
 }

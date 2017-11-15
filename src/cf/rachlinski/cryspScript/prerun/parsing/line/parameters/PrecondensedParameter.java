@@ -12,6 +12,7 @@ public class PrecondensedParameter
 	private static final int CHR_TYPE = 1;
 	private static final int INT_TYPE = 2;
 	private static final int DEC_TYPE = 3;
+	private static final int NULL_TYPE = 4;
 	private String value;
 
 	/**
@@ -51,6 +52,8 @@ public class PrecondensedParameter
 			return new Variable<Integer>(Integer.parseInt(value));
 		case DEC_TYPE:
 			return new Variable<Double>(Double.parseDouble(value));
+		case NULL_TYPE:
+			return Variable.NULL;
 		default:
 			return Variable.NULL;
 		}
@@ -72,13 +75,16 @@ public class PrecondensedParameter
 	 */
 	private int evaluateType(String text)
 	{
-		if(text.charAt(0) == '\"')
-			return STR_TYPE;
-		else if(text.charAt(0) == '\'')
-			return CHR_TYPE;
-		else if(text.contains("."))
-			return DEC_TYPE;
-
-		return INT_TYPE;
+		if(text.length() > 0)
+		{
+			if(text.charAt(0) == '\"')
+				return STR_TYPE;
+			else if(text.charAt(0) == '\'')
+				return CHR_TYPE;
+			else if(text.contains("."))
+				return DEC_TYPE;
+			return INT_TYPE;
+		}
+		return NULL_TYPE;
 	}
 }

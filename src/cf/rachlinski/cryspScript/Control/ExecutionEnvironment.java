@@ -47,7 +47,7 @@ public class ExecutionEnvironment
 		for(int i = 0; i < lines.length; i++)
 		{
 			parsed[i] = new Line((String) lines[i]);
-		}			//TODO osdhngfjsdghdfotawhesrgjuiseroserpszjoihredthj
+		}
 
 		this.executionStack = new ExecutionStack(parsed);
 		this.varMaps = new LinkedList<>();

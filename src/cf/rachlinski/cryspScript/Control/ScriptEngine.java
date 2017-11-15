@@ -1,14 +1,35 @@
 package cf.rachlinski.cryspScript.Control;
 
+import cf.rachlinski.cryspScript.runtime.dataStructs.map.GlobalVariableMap;
+
+import java.io.File;
+import java.io.IOException;
+
 /**
  * Class that handles loading of scripts and input from a console stream, as well as output
+ *
  */
 public final class ScriptEngine
 {
 
 	public static ExecutionEnvironment env;
+	static
+	{
+		try
+		{
+			env = new ExecutionEnvironment(new GlobalVariableMap(),		//TODO more robust system, and NO STATIC SHIT EDVERYHWERE
+				new File("C:\\Users\\Christopher\\Programming\\Java\\CryspScript\\test\\cf\\rachlinski\\cryspScriptTest\\ScriptTest")
+			);
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 
-	public ScriptEngine()
+	}
+	/*
+	Do not instantiate
+	 */
+	private ScriptEngine()
 	{
 
 	}

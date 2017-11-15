@@ -1,1 +1,9 @@
-print{"hellow"}
+if{0}
+    print{"Working"}
+    if{0}
+        print{"nested if statements working"}
+    fi{}
+    print{"yup"}
+fi{}
+
+print{"Yoyodone"}

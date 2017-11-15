@@ -2,4 +2,10 @@
     <command name="print">
         <class>cf.rachlinski.cryspScript.runtime.exec.keyword.Print</class>
     </command>
+    <command name="if">
+        <class>cf.rachlinski.cryspScript.runtime.exec.keyword.If</class>
+    </command>
+    <command name="fi">
+        <class>cf.rachlinski.cryspScript.runtime.exec.keyword.Fi</class>
+    </command>
 </commands>

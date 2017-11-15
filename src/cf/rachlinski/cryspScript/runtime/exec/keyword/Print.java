@@ -6,6 +6,8 @@ import cf.rachlinski.cryspScript.runtime.dataStructs.stack.TypeStack;
 import cf.rachlinski.cryspScript.runtime.dataStructs.variable.Variable;
 import cf.rachlinski.cryspScript.runtime.exec.Executable;
 
+import java.lang.reflect.Type;
+
 /**
  * Print output to standard output
  * Syntax <br>
@@ -13,10 +15,8 @@ import cf.rachlinski.cryspScript.runtime.exec.Executable;
  */
 public final class Print extends Keyword
 {
-	static
-	{
-		EXPECTED_TYPES = new TypeStack(new Class<?>[] {String.class});
-	}
+	private static final TypeStack EXPECTED_TYPES = new TypeStack(new Class<?>[] {String.class});
+
 
 	public Print(ParameterStack args)
 	{

@@ -7,7 +7,7 @@ package cf.rachlinski.cryspScript.runtime.dataStructs.variable;
 public class Variable<E>
 {
 	public static final Variable<Integer> NULL = new Variable<>(null);
-
+	public static final Variable<Integer> ONE = new Variable<>(1);
 	/**
 	 * The value of the variable
 	 */
@@ -65,5 +65,14 @@ public class Variable<E>
 	public String toString()
 	{
 		return value + "";
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if(getClass() != obj.getClass())
+			return false;
+
+		return this.value == ((Variable<?>) obj).value;
 	}
 }

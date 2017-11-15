@@ -24,14 +24,12 @@ public class ParameterParser extends Parser<PrecondensedParameter[]>
 	@Override
 	public PrecondensedParameter[] parse(String args)
 	{
-		System.out.println(args);
+
 		args = args.trim();
 
 		args = args.charAt(0) == '{' ? args.substring(1) : args;
 		args = args.charAt(args.length() - 1) == '}' ? args.substring(0, args.length() - 1) : args;
-		args = args.replace(" ", "");
 
-		System.out.println(args);
 
 		String keyword;
 		int paramCount = 1;

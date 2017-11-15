@@ -3,7 +3,6 @@ package cf.rachlinski.cryspScript.runtime.dataStructs.stack;
 import cf.rachlinski.cryspScript.prerun.parsing.line.Line;
 import cf.rachlinski.cryspScript.runtime.codeAccessors.Registers;
 import cf.rachlinski.cryspScript.runtime.dataStructs.variable.InstructionPointer;
-import cf.rachlinski.cryspScript.runtime.exec.Executable;
 
 public class ExecutionStack extends Stack<Line>
 {
@@ -18,16 +17,17 @@ public class ExecutionStack extends Stack<Line>
 	}
 
 	/**
-	 * Return an instruction pointer to the next occurrence of the specified value
+	 * Return an instruction pointer to the next occurrence of the specified value, accounting for nested statements
 	 * @param instruction the {@code Class} object corresponding to the next instruction
 	 * @return an InstructionPointer to the next occurrence of the specified instruction
 	 */
-	public InstructionPointer getNextOccurenceOf(Class<?> instruction)
+	public InstructionPointer getNextOccNest(Class<?> instruction)
 	{
+		//TODO Account for nested if and for and any other user added
 		int occurrence = -1;
 		for(int i = Registers.r1.getValue(); i < contents.length; i++)
 		{
-			if(contents[i].equals(instruction))		//TODO possible bug here
+			if(contents[i].parse().getClass().equals(instruction))
 			{
 				occurrence = i;
 				break;
@@ -43,6 +43,8 @@ public class ExecutionStack extends Stack<Line>
 	 */
 	public void exec()
 	{
+		if(Registers.r1.getValue() >= contents.length)
+			return;
 		contents[Registers.r1.getValue()].parse().run();
 		Registers.r1.inc();
 	}

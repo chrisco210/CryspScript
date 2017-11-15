@@ -58,12 +58,18 @@ public class Line
 	private PrecondensedParameter[] parameters;
 
 	/**
+	 * Contains the origonal, unparsed, text, so it can be supplied for exceptions
+	 */
+	private String origText;
+
+	/**
 	 * Construct a new line based on a string.  Most parsing takes place in the
 	 * constructor, so the {@code parse()} method only reads an XML file
 	 * @param line the string of text to turn into a line
 	 */
 	public Line(String line)
 	{
+		this.origText = line;
 		//Check for comments, don't read them if found
 		line = line.contains(";") ? line.substring(0, line.indexOf(";") - 1) : line;
 
@@ -118,7 +124,7 @@ public class Line
 	{
 
 		String className = "noclassdef";
-		System.out.println(keyword);
+
 		try
 		{
 			className =  (String) XPathFactory.newInstance().newXPath().compile(
@@ -129,9 +135,10 @@ public class Line
 		{
 			//TODO handle exception
 		}
-		
+
+
 		try {
-			System.out.println(className);
+
 			Constructor<?> con = Class.forName(className).getConstructor(ParameterStack.class);
 			
 			Variable<?>[] v = new Variable<?>[parameters.length];
@@ -146,18 +153,14 @@ public class Line
 		catch (SecurityException | NoSuchMethodException
 				| ClassNotFoundException | IllegalArgumentException | InstantiationException | IllegalAccessException | InvocationTargetException e)
 		{
+			e.printStackTrace();
 			throw new IllegalKeywordException(this, Registers.r1.getValue());
 		}
 	}
 
-	/**
-	 * Returns true if the given object has the same KEYWORD
-	 * @param obj the Line to compare the keyword to
-	 * @return true if the given object has the same KEYWORD as the implicit parameter
-	 */
 	@Override
-	public boolean equals(Object obj)
+	public String toString()
 	{
-		return this.keyword.equals(((Line)obj).keyword);
+		return origText;
 	}
 }
