@@ -29,7 +29,7 @@ public class ParameterParser extends Parser<PrecondensedParameter[]>
 
 		args = args.charAt(0) == '{' ? args.substring(1) : args;
 		args = args.charAt(args.length() - 1) == '}' ? args.substring(0, args.length() - 1) : args;
-		args.replace(" ", "");
+		args = args.replace(" ", "");
 
 		System.out.println(args);
 

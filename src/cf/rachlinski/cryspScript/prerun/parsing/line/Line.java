@@ -1,7 +1,9 @@
 package cf.rachlinski.cryspScript.prerun.parsing.line;
 
+import cf.rachlinski.cryspScript.prerun.parsing.Except.IllegalKeywordException;
 import cf.rachlinski.cryspScript.prerun.parsing.accessors.CommandXML;
 import cf.rachlinski.cryspScript.prerun.parsing.line.parameters.PrecondensedParameter;
+import cf.rachlinski.cryspScript.runtime.codeAccessors.Registers;
 import cf.rachlinski.cryspScript.runtime.dataStructs.map.GlobalVariableMap;
 import cf.rachlinski.cryspScript.runtime.dataStructs.stack.ParameterStack;
 import cf.rachlinski.cryspScript.runtime.dataStructs.variable.Variable;
@@ -96,6 +98,16 @@ public class Line
 		parameters = new ParameterParser().parse(line);
 	}
 
+	public PrecondensedParameter[] getParameters()
+	{
+		return parameters;
+	}
+
+	public String getKeyword()
+	{
+		return keyword;
+	}
+
 	/**
 	 * Converts a line into an Executable command.  To do this it first evaluates variables from the Variable stack,
 	 * then evaluates any functions.  If the line is only a routine, the routine is executed, otherwise, the keyword
@@ -130,11 +142,22 @@ public class Line
 			}
 			
 			return (Executable) con.newInstance(new ParameterStack(v));
-		} catch (SecurityException | NoSuchMethodException
-				| ClassNotFoundException | IllegalArgumentException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-		return new Print(new ParameterStack(new Variable<?>[] {new Variable<String>("ClassNotFound")}));
+		catch (SecurityException | NoSuchMethodException
+				| ClassNotFoundException | IllegalArgumentException | InstantiationException | IllegalAccessException | InvocationTargetException e)
+		{
+			throw new IllegalKeywordException(this, Registers.r1.getValue());
+		}
+	}
+
+	/**
+	 * Returns true if the given object has the same KEYWORD
+	 * @param obj the Line to compare the keyword to
+	 * @return true if the given object has the same KEYWORD as the implicit parameter
+	 */
+	@Override
+	public boolean equals(Object obj)
+	{
+		return this.keyword.equals(((Line)obj).keyword);
 	}
 }

@@ -1,17 +1,18 @@
 package cf.rachlinski.cryspScript.runtime.dataStructs.stack;
 
+import cf.rachlinski.cryspScript.prerun.parsing.line.Line;
 import cf.rachlinski.cryspScript.runtime.codeAccessors.Registers;
 import cf.rachlinski.cryspScript.runtime.dataStructs.variable.InstructionPointer;
 import cf.rachlinski.cryspScript.runtime.exec.Executable;
 
-public class ExecutionStack extends Stack<Executable>
+public class ExecutionStack extends Stack<Line>
 {
 	/**
 	 * Construct a new Stack object given contents
 	 *
 	 * @param contents the array of {@code Variable<?>}s to initialize
 	 */
-	public ExecutionStack(Executable[] contents)
+	public ExecutionStack(Line[] contents)
 	{
 		super(contents);
 	}
@@ -26,7 +27,7 @@ public class ExecutionStack extends Stack<Executable>
 		int occurrence = -1;
 		for(int i = Registers.r1.getValue(); i < contents.length; i++)
 		{
-			if(contents[i].equals(instruction))
+			if(contents[i].equals(instruction))		//TODO possible bug here
 			{
 				occurrence = i;
 				break;
@@ -42,7 +43,7 @@ public class ExecutionStack extends Stack<Executable>
 	 */
 	public void exec()
 	{
-		contents[Registers.r1.getValue()].run();
+		contents[Registers.r1.getValue()].parse().run();
 		Registers.r1.inc();
 	}
 }

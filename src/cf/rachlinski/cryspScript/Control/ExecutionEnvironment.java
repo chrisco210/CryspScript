@@ -37,19 +37,22 @@ public class ExecutionEnvironment
 		FileReader fos = new FileReader(scriptPath);
 		BufferedReader buff = new BufferedReader(fos);
 
-		String[] lines = (String[]) buff.lines()
-				.filter(n -> n.trim() != "")
+		Object[] lines = buff.lines()
+				.filter(n -> !n.trim().equals(""))
 				.filter(n -> n.trim().charAt(0) != '#')
 				.toArray();
 
-		Executable[] executables = new Executable[lines.length];
+		Line[] parsed = new Line[lines.length];
 
 		for(int i = 0; i < lines.length; i++)
 		{
-			executables[i] = new Line(lines[i]).parse();
+			parsed[i] = new Line((String) lines[i]);
 		}			//TODO osdhngfjsdghdfotawhesrgjuiseroserpszjoihredthj
 
+		this.executionStack = new ExecutionStack(parsed);
+		this.varMaps = new LinkedList<>();
 
+		varMaps.add(0, globalVariableMap);
 	}
 
 	/**
@@ -61,6 +64,18 @@ public class ExecutionEnvironment
 		varMaps = new LinkedList<Map>();
 		varMaps.add(new GlobalVariableMap());
 		this.executionStack = executionStack;
+	}
+
+
+	/**
+	 * Mixing naming conventions is fun
+	 */
+	public void EXECUTE_PROGRAM()
+	{
+		for(int i = 0; i < executionStack.length(); i++)
+		{
+			executionStack.exec();
+		}
 	}
 
 	/* VARIABLE STUFF */
