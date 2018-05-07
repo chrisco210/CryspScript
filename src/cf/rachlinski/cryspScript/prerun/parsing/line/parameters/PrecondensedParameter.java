@@ -77,6 +77,7 @@ public class PrecondensedParameter
 	{
 		if(text.length() > 0)
 		{
+
 			if(text.charAt(0) == '\"')
 				return STR_TYPE;
 			else if(text.charAt(0) == '\'')

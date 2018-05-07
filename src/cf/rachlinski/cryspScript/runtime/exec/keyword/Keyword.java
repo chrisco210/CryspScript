@@ -43,6 +43,27 @@ public abstract class Keyword implements Executable
 	}
 
 	/**
+	 * Return true if a {@code Keyword} object is represents the same type of command as this object
+	 * @param obj the object to compare to
+	 * @return if a {@code Keyword} object is represents the same type of command as this object
+	 */
+	public boolean equals(Keyword obj)
+	{
+		return this.getClass().equals(obj.getClass());
+	}
+
+
+	/**
+	 * Return true if a {@code Keyword} object is represents the same type of command as this object
+	 * @param obj the object to compare to
+	 * @return if a {@code Keyword} object is represents the same type of command as this object
+	 */
+	public boolean equals(Class<?> obj)
+	{
+		return this.getClass().equals(obj);
+	}
+
+	/**
 	 * Validate if the arguments supplied are of the correct type
 	 * @param against the TypeStack to validate against
 	 * @return if the arguments are of the correct type

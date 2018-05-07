@@ -27,7 +27,8 @@ public class If extends Keyword
 	{
 		if(!args.get(0).equals(Variable.ONE))
 		{
-			ScriptEngine.env.executionStack.getNextOccurrenceOf(Fi.class).jumpTo();
+			System.out.println(ScriptEngine.env.executionStack.getNextOccNest("Fi"));
+			ScriptEngine.env.executionStack.getNextOccNest("Fi").jumpTo();
 		}
 
 	}

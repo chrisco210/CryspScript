@@ -10,17 +10,25 @@ public final class Registers
 	/**
 	 * Prevent registers from being instantiated
 	 */
-	private Registers() { }
+	//private Registers() { }
+
+	static
+	{
+		r0 = new Register(0);
+		r1 = new Register(0);
+	}
 
 	/**
 	 * Register used for return values
 	 */
-	public static Register r0 = new Register(0);
+	public static Register r0;
+
+	public static int TIP = -1;
 
 	/**
 	 * Register used for the instruction pointer
 	 */
-	public static Register r1 = new Register(0);
+	public static Register r1;
 
 	/**
 	 * Register used for the return instruction pointer

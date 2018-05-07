@@ -1,6 +1,7 @@
 package cf.rachlinski.cryspScript.Control;
 
 import cf.rachlinski.cryspScript.prerun.parsing.line.Line;
+import cf.rachlinski.cryspScript.runtime.codeAccessors.Registers;
 import cf.rachlinski.cryspScript.runtime.dataStructs.map.GlobalVariableMap;
 import cf.rachlinski.cryspScript.runtime.dataStructs.map.InstanceVariableMap;
 import cf.rachlinski.cryspScript.runtime.dataStructs.map.Map;
@@ -72,7 +73,8 @@ public class ExecutionEnvironment
 	 */
 	public void EXECUTE_PROGRAM()
 	{
-		for(int i = 0; i < executionStack.length(); i++)
+		Registers reg = new Registers();
+		while(!executionStack.finished())
 		{
 			executionStack.exec();
 		}

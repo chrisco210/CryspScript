@@ -23,6 +23,6 @@ public class PrecondensedLineStack extends Stack<Executable>
 	 */
 	public void parse()
 	{
-		Registers.r1.update(Registers.r1.getValue() + 1);
+		//Registers.r1.update(Registers.r1.getValue() + 1);
 	}
 }

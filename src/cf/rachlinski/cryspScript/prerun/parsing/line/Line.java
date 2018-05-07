@@ -142,9 +142,8 @@ public class Line
 			Constructor<?> con = Class.forName(className).getConstructor(ParameterStack.class);
 			
 			Variable<?>[] v = new Variable<?>[parameters.length];
-			
 			for(int i = 0; i < v.length; i++)
-			{ 
+			{
 				v[i] = parameters[i].valueOf();
 			}
 			
