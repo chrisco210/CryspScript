@@ -1,5 +1,7 @@
 if{0}
-
+    if{1}
+        print{"no"}
+    fi{}
     print{"yup"}
 fi{}
 

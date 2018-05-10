@@ -6,6 +6,7 @@ import cf.rachlinski.cryspScript.runtime.dataStructs.variable.InstructionPointer
 import cf.rachlinski.cryspScript.runtime.exec.Executable;
 import cf.rachlinski.cryspScript.runtime.exec.keyword.Fi;
 import cf.rachlinski.cryspScript.runtime.exec.keyword.Keyword;
+import cf.rachlinski.cryspScript.runtime.exec.keyword.UnmatchedNestException;
 
 public class ExecutionStack extends Stack<Line>
 {
@@ -34,7 +35,6 @@ public class ExecutionStack extends Stack<Line>
 
 		for(int i = Registers.r1.getValue() + 1; i < contents.length; i++)
 		{
-			System.out.println(contents[i].getKeyword() + "  ==  " + instruction);
 			if((nesting == 0) && contents[i].getKeyword().equals(instruction))
 			{
 				occurrence = i;
@@ -50,7 +50,12 @@ public class ExecutionStack extends Stack<Line>
 			}
 		}
 
-		return new InstructionPointer(occurrence);
+		if(occurrence != -1)
+		{
+			return new InstructionPointer(occurrence);
+		}
+
+		throw new UnmatchedNestException(start, instruction);
 	}
 
 	public boolean finished()
