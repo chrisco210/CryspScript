@@ -53,7 +53,7 @@ public class Line
 	private PrecondensedParameter[] parameters;
 
 	/**
-	 * Contains the origonal, unparsed, text, so it can be supplied for exceptions
+	 * Contains the original, unparsed, text, so it can be supplied for exceptions
 	 */
 	private String origText;
 

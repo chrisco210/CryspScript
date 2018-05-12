@@ -3,6 +3,9 @@ package cf.rachlinski.cryspscript.prerun.parsing.line;
 import cf.rachlinski.cryspscript.prerun.parsing.Parser;
 import cf.rachlinski.cryspscript.prerun.parsing.line.parameters.PrecondensedParameter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ParameterParser extends Parser<PrecondensedParameter[]>
 {
 
@@ -24,13 +27,46 @@ public class ParameterParser extends Parser<PrecondensedParameter[]>
 	@Override
 	public PrecondensedParameter[] parse(String args)
 	{
-
 		args = args.trim();
 
 		args = args.charAt(0) == '{' ? args.substring(1) : args;
 		args = args.charAt(args.length() - 1) == '}' ? args.substring(0, args.length() - 1) : args;
 
-		
+		List<PrecondensedParameter> ps = new ArrayList<>();
+
+		ArrayList<Integer> commaLoc = new ArrayList<>();
+
+		for(int i = 0; i < args.length(); i++)
+		{
+			if(args.charAt(i) == ',')
+			{
+				commaLoc.add(i);
+			}
+		}
+
+		if(commaLoc.isEmpty())
+		{
+			ps.add(new PrecondensedParameter(args));
+		}
+		else
+		{
+			int lastI = -1;
+			for(int i : commaLoc)
+			{
+				ps.add(new PrecondensedParameter(args.substring(lastI + 1, i)));
+				lastI = i;
+			}
+		}
+
+
+		return ps.toArray(new PrecondensedParameter[]{});
+
+
+
+		/*
+
+
+
 		int paramCount = 1;
 
 		//Get total number of args
@@ -86,6 +122,9 @@ public class ParameterParser extends Parser<PrecondensedParameter[]>
 		}
 
 		return ps;
+		*/
+
+
 	}
 
 
