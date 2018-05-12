@@ -8,4 +8,10 @@
     <command name="fi">
         <class>cf.rachlinski.cryspScript.runtime.exec.keyword.Fi</class>
     </command>
+    <command name="while">
+        <class>cf.rachlinski.cryspScript.runtime.exec.keyword.While</class>
+    </command>
+    <command name="endw">
+        <class>cf.rachlinski.cryspScript.runtime.exec.keyword.EndW</class>
+    </command>
 </commands>
