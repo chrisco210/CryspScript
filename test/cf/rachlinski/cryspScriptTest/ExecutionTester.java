@@ -1,9 +1,9 @@
 package cf.rachlinski.cryspScriptTest;
 
-import cf.rachlinski.cryspScript.runtime.dataStructs.stack.ParameterStack;
-import cf.rachlinski.cryspScript.runtime.dataStructs.variable.Variable;
-import cf.rachlinski.cryspScript.runtime.exec.Executable;
-import cf.rachlinski.cryspScript.runtime.exec.keyword.Print;
+import cf.rachlinski.cryspscript.runtime.dataStructs.stack.ParameterStack;
+import cf.rachlinski.cryspscript.runtime.dataStructs.variable.Variable;
+import cf.rachlinski.cryspscript.runtime.exec.Executable;
+import cf.rachlinski.cryspscript.runtime.exec.keyword.Print;
 
 public class ExecutionTester
 {

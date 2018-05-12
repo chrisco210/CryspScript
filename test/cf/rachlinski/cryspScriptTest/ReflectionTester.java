@@ -1,6 +1,6 @@
 package cf.rachlinski.cryspScriptTest;
 
-import cf.rachlinski.cryspScript.prerun.parsing.line.Line;
+import cf.rachlinski.cryspscript.prerun.parsing.line.Line;
 
 public class ReflectionTester
 {

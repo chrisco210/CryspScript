@@ -1,11 +1,7 @@
 package cf.rachlinski.cryspScriptTest;
 
-import cf.rachlinski.cryspScript.Control.ExecutionEnvironment;
-import cf.rachlinski.cryspScript.Control.ScriptEngine;
-import cf.rachlinski.cryspScript.runtime.dataStructs.map.GlobalVariableMap;
-import sun.font.Script;
+import cf.rachlinski.cryspscript.Control.ScriptEngine;
 
-import java.io.File;
 import java.io.IOException;
 
 public class ExecutionEnvironmentTester
