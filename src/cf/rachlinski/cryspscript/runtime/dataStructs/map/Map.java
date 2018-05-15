@@ -14,6 +14,12 @@ public class Map<E>
 	 */
 	protected HashMap<E, Variable<?>> contents;
 
+	public Map()
+	{
+		contents = new HashMap<>();
+	}
+
+
 	/**
 	 * Retrieve a variable from the contents given a key
 	 * @param key the key of the desired variable

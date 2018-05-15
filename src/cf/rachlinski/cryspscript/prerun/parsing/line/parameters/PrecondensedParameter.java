@@ -1,6 +1,8 @@
 package cf.rachlinski.cryspscript.prerun.parsing.line.parameters;
 
+import cf.rachlinski.cryspscript.Control.ScriptEngine;
 import cf.rachlinski.cryspscript.runtime.dataStructs.variable.Variable;
+import sun.font.Script;
 
 /**
  * Represents a parameter in it's pre execution state
@@ -13,6 +15,7 @@ public class PrecondensedParameter
 	private static final int INT_TYPE = 2;
 	private static final int DEC_TYPE = 3;
 	private static final int NULL_TYPE = 4;
+	public static final int VARIABLE_TYPE = 5;
 	private String value;
 
 	/**
@@ -28,7 +31,7 @@ public class PrecondensedParameter
 	 */
 	public PrecondensedParameter(String value)
 	{
-		this.value = value;
+		this.value = value.trim();
 	}
 
 	/**
@@ -39,9 +42,10 @@ public class PrecondensedParameter
 	 */
 	public Variable<?> valueOf()
 	{
-		//TODO Evaluate variables at this point, right now does not support this
 		switch(evaluateType(value))
 		{
+		case VARIABLE_TYPE:
+			return ScriptEngine.env.getVaraible(value.substring(1));
 		case STR_TYPE:
 			value = value.replace('\"', '\u0000');
 			return new Variable<String>(value);
@@ -49,8 +53,10 @@ public class PrecondensedParameter
 			value = value.replace('\'', '\u0000');
 			return new Variable<Character>(value.charAt(0));
 		case INT_TYPE:
+			//TODO resolve operations
 			return new Variable<Integer>(Integer.parseInt(value));
 		case DEC_TYPE:
+			//TODO resolve operations
 			return new Variable<Double>(Double.parseDouble(value));
 		case NULL_TYPE:
 			return Variable.NULL;
@@ -77,7 +83,8 @@ public class PrecondensedParameter
 	{
 		if(text.length() > 0)
 		{
-
+			if(text.charAt(0) == '$')
+				return VARIABLE_TYPE;
 			if(text.charAt(0) == '\"')
 				return STR_TYPE;
 			else if(text.charAt(0) == '\'')
@@ -87,5 +94,10 @@ public class PrecondensedParameter
 			return INT_TYPE;
 		}
 		return NULL_TYPE;
+	}
+
+	public String toString()
+	{
+		return "[PrecondensedParameter=" + value + "]";
 	}
 }

@@ -56,6 +56,7 @@ public class ParameterParser extends Parser<PrecondensedParameter[]>
 				ps.add(new PrecondensedParameter(args.substring(lastI + 1, i)));
 				lastI = i;
 			}
+			ps.add(new PrecondensedParameter(args.substring(lastI + 1)));
 		}
 
 

@@ -11,7 +11,7 @@ public class Var extends Keyword
 
 	public Var(ParameterStack args) throws IllegalMethodTypeException
 	{
-		super(args, EXPECTED_TYPES);
+		super(args);
 	}
 
 	@Override
