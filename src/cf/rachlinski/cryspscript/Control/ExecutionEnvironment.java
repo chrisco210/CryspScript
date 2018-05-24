@@ -7,6 +7,7 @@ import cf.rachlinski.cryspscript.runtime.dataStructs.map.InstanceVariableMap;
 import cf.rachlinski.cryspscript.runtime.dataStructs.map.Map;
 import cf.rachlinski.cryspscript.runtime.dataStructs.stack.ExecutionStack;
 import cf.rachlinski.cryspscript.runtime.dataStructs.variable.Variable;
+import sun.security.jca.GetInstance;
 
 import java.io.*;
 import java.util.*;
@@ -61,7 +62,7 @@ public class ExecutionEnvironment
 	 */
 	public ExecutionEnvironment(ExecutionStack executionStack)
 	{
-		varMaps = new LinkedList<Map<String>>();
+		varMaps = new LinkedList<>();
 		varMaps.add(new GlobalVariableMap());
 		this.executionStack = executionStack;
 	}

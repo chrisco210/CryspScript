@@ -7,7 +7,7 @@ import java.util.HashMap;
 /**
  * Superclass for all Map data structures
  */
-public class Map<E>
+public abstract class Map<E>
 {
 	/**
 	 * Map to put variables on
@@ -45,8 +45,5 @@ public class Map<E>
 	 * @param name the name of the variable to check
 	 * @return if a variable exists in a contents
 	 */
-	public boolean contains(E name)
-	{
-		return contents.containsKey(name);
-	}
+	public abstract boolean contains(E name);
 }

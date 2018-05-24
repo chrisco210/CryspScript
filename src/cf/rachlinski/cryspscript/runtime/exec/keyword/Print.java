@@ -20,7 +20,7 @@ public final class Print extends Keyword
 
 	public Print(ParameterStack args)
 	{
-		super(args, EXPECTED_TYPES);
+		super(args);
 	}
 
 	@Override

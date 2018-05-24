@@ -15,4 +15,17 @@ public class GlobalVariableMap extends Map<String>
 	{
 		contents.remove(name);
 	}
+
+	@Override
+	public boolean contains(String name)
+	{
+
+		//Replacement for containsKey, because it doesn't work
+		for(String elem : contents.keySet())
+		{
+			if(name.trim().equals(elem.trim()))
+				return true;
+		}
+		return false;
+	}
 }

@@ -39,4 +39,20 @@ public class InstanceVariableMap extends Map<String>
 		contents.clear();
 	}
 
+	/**
+	 * Check if a variable exists in a contents
+	 * @param name the name of the variable to check
+	 * @return if a variable exists in a contents
+	 */
+	@Override
+	public boolean contains(String name)
+	{
+		//Replacement for containsKey, because it doesn't work
+		for(String elem : contents.keySet())
+		{
+			if(name.trim().equals(elem.trim()))
+				return true;
+		}
+		return false;
+	}
 }
