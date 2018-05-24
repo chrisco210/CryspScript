@@ -12,7 +12,7 @@ public abstract class Map<E>
 	/**
 	 * Map to put variables on
 	 */
-	protected HashMap<E, Variable<?>> contents;
+	protected HashMap<String, Variable<?>> contents;
 
 	public Map()
 	{
@@ -25,17 +25,14 @@ public abstract class Map<E>
 	 * @param key the key of the desired variable
 	 * @return the Variable object corresponding to the given key
 	 */
-	public Variable<?> get(E key)
-	{
-		return contents.get(key);
-	}
+	public abstract Variable<?> get(E key);
 
 	/**
 	 * Put a variable on the contents with key key, and value value
 	 * @param key the key to use
 	 * @param value the value to put on the contents
 	 */
-	public void put(E key, Variable<?> value)
+	public void put(String key, Variable<?> value)
 	{
 		contents.put(key, value);
 	}

@@ -1,5 +1,7 @@
 package cf.rachlinski.cryspscript.runtime.dataStructs.map;
 
+import cf.rachlinski.cryspscript.runtime.dataStructs.variable.Variable;
+
 import java.util.HashMap;
 
 /**
@@ -37,6 +39,13 @@ public class InstanceVariableMap extends Map<String>
 	public void clear()
 	{
 		contents.clear();
+	}
+
+
+	@Override
+	public Variable<?> get(String key)
+	{
+		return contents.get(key);
 	}
 
 	/**

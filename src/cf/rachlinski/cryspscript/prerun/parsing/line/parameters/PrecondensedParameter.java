@@ -2,7 +2,6 @@ package cf.rachlinski.cryspscript.prerun.parsing.line.parameters;
 
 import cf.rachlinski.cryspscript.Control.ScriptEngine;
 import cf.rachlinski.cryspscript.runtime.dataStructs.variable.Variable;
-import sun.font.Script;
 
 /**
  * Represents a parameter in it's pre execution state
@@ -45,7 +44,7 @@ public class PrecondensedParameter
 		switch(evaluateType(value))
 		{
 		case VARIABLE_TYPE:
-			return ScriptEngine.env.getVaraible(value.substring(1));
+			return ScriptEngine.env.getVariable(value.substring(1));
 		case STR_TYPE:
 			value = value.replace('\"', '\u0000');
 			return new Variable<String>(value);

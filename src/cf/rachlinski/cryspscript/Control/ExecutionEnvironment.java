@@ -160,12 +160,14 @@ public class ExecutionEnvironment
 	 * @param name the name of the variable to get the value of
 	 * @return the variable specified by the name
 	 */
-	public Variable<?> getVaraible(String name)
+	public Variable<?> getVariable(String name)
 	{
 		for(int i = varMaps.size() - 1; i >= 0; i--)
 		{
 			if(varMaps.get(i).contains(name))
 			{
+				System.out.println(varMaps.get(i));
+				System.out.println(varMaps.get(i).get(name));
 				return varMaps.get(i).get(name);
 			}
 		}
