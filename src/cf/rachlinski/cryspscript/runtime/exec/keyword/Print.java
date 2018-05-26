@@ -26,7 +26,6 @@ public final class Print extends Keyword
 	@Override
 	public void run()
 	{
-
 		System.out.println(args.get(0));
 	}
 }

@@ -22,8 +22,6 @@ public class GlobalVariableMap extends Map<String>
 	@Override
 	public Variable<?> get(String key)
 	{
-		System.out.println(contents);
-		System.out.println(contents.get(key));
 		return contents.get(key.trim());
 	}
 

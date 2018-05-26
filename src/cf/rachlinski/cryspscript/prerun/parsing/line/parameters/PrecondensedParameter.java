@@ -44,7 +44,7 @@ public class PrecondensedParameter
 		switch(evaluateType(value))
 		{
 		case VARIABLE_TYPE:
-			return ScriptEngine.env.getVariable(value.substring(1));
+			return ScriptEngine.env.getVariable(value.substring(1).trim());
 		case STR_TYPE:
 			value = value.replace('\"', '\u0000');
 			return new Variable<String>(value);

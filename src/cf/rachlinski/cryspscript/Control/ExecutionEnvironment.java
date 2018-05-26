@@ -164,14 +164,21 @@ public class ExecutionEnvironment
 	{
 		for(int i = varMaps.size() - 1; i >= 0; i--)
 		{
+
 			if(varMaps.get(i).contains(name))
 			{
-				System.out.println(varMaps.get(i));
-				System.out.println(varMaps.get(i).get(name));
+				System.out.println(varMaps.get(i).contains(name));
+				System.out.println(varMaps.get(i).get(name).getValue());
 				return varMaps.get(i).get(name);
 			}
 		}
 
 		return Variable.NULL;
+	}
+
+	@Override
+	public String toString()
+	{
+		return varMaps.get(0).toString();
 	}
 }

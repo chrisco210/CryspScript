@@ -43,4 +43,10 @@ public abstract class Map<E>
 	 * @return if a variable exists in a contents
 	 */
 	public abstract boolean contains(E name);
+
+	@Override
+	public String toString()
+	{
+		return contents.toString();
+	}
 }
