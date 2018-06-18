@@ -2,39 +2,40 @@ package cf.rachlinski.cryspscript.runtime.exec.keyword;
 
 import cf.rachlinski.cryspscript.Control.ScriptEngine;
 import cf.rachlinski.cryspscript.runtime.codeAccessors.Registers;
-import cf.rachlinski.cryspscript.runtime.dataStructs.map.Map;
 import cf.rachlinski.cryspscript.runtime.dataStructs.stack.ParameterStack;
 import cf.rachlinski.cryspscript.runtime.dataStructs.stack.TypeStack;
-import cf.rachlinski.cryspscript.runtime.dataStructs.variable.Variable;
 import cf.rachlinski.cryspscript.runtime.exec.method.IllegalMethodTypeException;
 
-import java.util.HashMap;
-
-public class If extends NestingKeyword
+public abstract class EndNestingKeyword extends Keyword
 {
-
-	private static final TypeStack EXPECTED_TYPES = new TypeStack(new Class<?>[] {Integer.class});
+	public EndNestingKeyword(ParameterStack args) throws IllegalMethodTypeException
+	{
+		super(args);
+	}
 
 	/**
 	 * Construct a command given arguments
-	 *
-	 * @param args        the arguments to supply
+	 * @param args the arguments to supply
+	 * @param correctArgs the arguments to
 	 * @throws IllegalMethodTypeException if the number of parameters supplied does not match the argument count
 	 */
-	public If(ParameterStack args) throws IllegalMethodTypeException
+	public EndNestingKeyword(ParameterStack args, TypeStack correctArgs) throws IllegalMethodTypeException
 	{
-		super(args, EXPECTED_TYPES);
+		super(args, correctArgs);
 	}
 
 	@Override
+	/**
+	 * To use: partially override this method, calling super it AFTER your own code
+	 */
 	public void run()
 	{
-		super.run();
+		decreaseDepth();
+	}
 
-		if(!args.get(0).equals(Variable.ONE))
-		{
-			ScriptEngine.env.executionStack.getNextOccNest("fi").jumpTo();
-		}
-
+	private void decreaseDepth()
+	{
+		ScriptEngine.env.freeInstanceMap();
+		Registers.r3.dec();
 	}
 }

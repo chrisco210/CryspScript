@@ -17,6 +17,6 @@ public class Var extends Keyword
 	@Override
 	public void run()
 	{
-		ScriptEngine.env.putVariable((String) args.get(0).getValue(), args.get(1));
+		ScriptEngine.env.putVariable(((String) args.get(0).getValue()).trim(), args.get(1));
 	}
 }

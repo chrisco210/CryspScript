@@ -2,9 +2,6 @@ package cf.rachlinski.cryspscript.Control;
 
 import cf.rachlinski.cryspscript.prerun.parsing.line.Line;
 import cf.rachlinski.cryspscript.runtime.codeAccessors.Registers;
-import cf.rachlinski.cryspscript.runtime.dataStructs.map.GlobalVariableMap;
-import cf.rachlinski.cryspscript.runtime.dataStructs.map.InstanceVariableMap;
-import cf.rachlinski.cryspscript.runtime.dataStructs.map.Map;
 import cf.rachlinski.cryspscript.runtime.dataStructs.stack.ExecutionStack;
 import cf.rachlinski.cryspscript.runtime.dataStructs.variable.Variable;
 import sun.security.jca.GetInstance;
@@ -22,16 +19,16 @@ public class ExecutionEnvironment
 	 * Top of the list (size - 1) is the instance map corresponding to the current depth
 	 * Instance (method) variable maps are added after the global variable contents
 	 */
-	private LinkedList<Map<String>> varMaps;
+	private LinkedList<HashMap<String, Variable<?>>> varMaps;
 	public ExecutionStack executionStack;
 
 	/**
 	 *
-	 * @param globalVariableMap
+	 * @param map
 	 * @param scriptPath
 	 * @throws IOException
 	 */
-	public ExecutionEnvironment(GlobalVariableMap globalVariableMap, File scriptPath) throws IOException
+	public ExecutionEnvironment(HashMap<String, Variable<?>> map, File scriptPath) throws IOException
 	{
 		FileReader fos = new FileReader(scriptPath);
 		BufferedReader buff = new BufferedReader(fos);
@@ -51,7 +48,7 @@ public class ExecutionEnvironment
 		this.executionStack = new ExecutionStack(parsed);
 		this.varMaps = new LinkedList<>();
 
-		varMaps.add(0, globalVariableMap);
+		varMaps.add(map);
 
 		buff.close();
 	}
@@ -63,7 +60,7 @@ public class ExecutionEnvironment
 	public ExecutionEnvironment(ExecutionStack executionStack)
 	{
 		varMaps = new LinkedList<>();
-		varMaps.add(new GlobalVariableMap());
+		varMaps.add(new HashMap<>());
 		this.executionStack = executionStack;
 	}
 
@@ -117,14 +114,14 @@ public class ExecutionEnvironment
 	 */
 	public void freeGlobalVariable(String name)
 	{
-		((GlobalVariableMap) varMaps.getFirst()).free(name);
+		(varMaps.getFirst()).remove(name);
 	}
 
 	/**
 	 * Create an instance variable contents
 	 * @param variableMap Add an instance variable contents to the variable maps
 	 */
-	public void createInstanceVarMap(InstanceVariableMap variableMap)
+	public void createInstanceVarMap(HashMap<String, Variable<?>> variableMap)
 	{
 		varMaps.add(variableMap);
 	}
@@ -162,18 +159,17 @@ public class ExecutionEnvironment
 	 */
 	public Variable<?> getVariable(String name)
 	{
+
+
 		for(int i = varMaps.size() - 1; i >= 0; i--)
 		{
-
-			if(varMaps.get(i).contains(name))
+			if(varMaps.get(i).containsKey(name.trim()))
 			{
-				System.out.println(varMaps.get(i).contains(name));
-				System.out.println(varMaps.get(i).get(name).getValue());
-				return varMaps.get(i).get(name);
+				return varMaps.get(i).get(name.trim());
 			}
 		}
-
 		return Variable.NULL;
+
 	}
 
 	@Override

@@ -1,9 +1,10 @@
 package cf.rachlinski.cryspscript.Control;
 
-import cf.rachlinski.cryspscript.runtime.dataStructs.map.GlobalVariableMap;
+import cf.rachlinski.cryspscript.runtime.dataStructs.map.Map;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 
 /**
  * Class that handles loading of scripts and input from a console stream, as well as output
@@ -17,7 +18,7 @@ public final class ScriptEngine
 	{
 		try
 		{
-			env = new ExecutionEnvironment(new GlobalVariableMap(),		//TODO more robust system, and NO STATIC SHIT EDVERYHWERE
+			env = new ExecutionEnvironment(new HashMap<>(),
 				new File("C:\\Users\\Christopher\\Programming\\Java\\CryspScript\\test\\cf\\rachlinski\\cryspScriptTest\\ScriptTest")
 			);
 		} catch (IOException e)

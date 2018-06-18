@@ -64,7 +64,7 @@ public class Variable<E>
 	@Override
 	public String toString()
 	{
-		return value + "";
+		return value.toString();
 	}
 
 	@Override
@@ -74,5 +74,11 @@ public class Variable<E>
 			return false;
 
 		return this.value == ((Variable<?>) obj).value;
+	}
+
+	@Override
+	public int hashCode()
+	{
+		return value.hashCode();
 	}
 }
