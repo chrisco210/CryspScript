@@ -19,7 +19,7 @@ public final class ScriptEngine
 		try
 		{
 			env = new ExecutionEnvironment(new HashMap<>(),
-				new File("C:\\Users\\Christopher\\Programming\\Java\\CryspScript\\test\\cf\\rachlinski\\cryspScriptTest\\ScriptTest")
+				new File("C:\\Users\\chris\\Programming\\Java\\CryspScript\\test\\cf\\rachlinski\\cryspScriptTest\\ScriptTest")
 			);
 		} catch (IOException e)
 		{

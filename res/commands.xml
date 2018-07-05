@@ -5,13 +5,13 @@
     <command name="if">
         <class>cf.rachlinski.cryspscript.runtime.exec.keyword.If</class>
     </command>
-    <command name="fi">
+    <command name="fi" closureOf="if">
         <class>cf.rachlinski.cryspscript.runtime.exec.keyword.Fi</class>
     </command>
     <command name="while">
         <class>cf.rachlinski.cryspscript.runtime.exec.keyword.While</class>
     </command>
-    <command name="endw">
+    <command name="endw" closureOf="while">
         <class>cf.rachlinski.cryspscript.runtime.exec.keyword.EndW</class>
     </command>
     <command name="var">

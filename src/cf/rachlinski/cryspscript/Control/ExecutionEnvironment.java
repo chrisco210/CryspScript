@@ -4,7 +4,6 @@ import cf.rachlinski.cryspscript.prerun.parsing.line.Line;
 import cf.rachlinski.cryspscript.runtime.codeAccessors.Registers;
 import cf.rachlinski.cryspscript.runtime.dataStructs.stack.ExecutionStack;
 import cf.rachlinski.cryspscript.runtime.dataStructs.variable.Variable;
-import sun.security.jca.GetInstance;
 
 import java.io.*;
 import java.util.*;
