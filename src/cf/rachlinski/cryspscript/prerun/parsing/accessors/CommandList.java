@@ -3,6 +3,7 @@ package cf.rachlinski.cryspscript.prerun.parsing.accessors;
 import cf.rachlinski.cryspscript.runtime.dataStructs.stack.ParameterStack;
 import cf.rachlinski.cryspscript.runtime.exec.Executable;
 import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
@@ -11,6 +12,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Parameter;
 import java.util.Map;
 
 /**
@@ -33,7 +36,25 @@ public class CommandList
 		for(int i = 0; i < nodeList.getLength(); i++)
 		{
 			Node n = nodeList.item(i);
-			n.
+			NamedNodeMap attribs = n.getAttributes();
+			Constructor<?> constructor = null;
+			try
+			{
+				constructor = Class.forName(attribs.getNamedItem("class").getTextContent()).getConstructor(ParameterStack.class);
+			}
+			catch (NoSuchMethodException e)
+			{
+				e.printStackTrace();
+			}
+			catch (ClassNotFoundException e)
+			{
+				e.printStackTrace();
+			}
+
+			if(constructor != null)
+			{
+				map.put(attribs.getNamedItem("name").getTextContent(), constructor);
+			}
 		}
 	}
 
@@ -43,8 +64,8 @@ public class CommandList
 	 * @param parameters the parameters to supply to the keyword
 	 * @return an instance of a keyword
 	 */
-	public Executable getInstance(String keyName, ParameterStack parameters)
+	public Executable getInstance(String keyName, ParameterStack parameters) throws IllegalAccessException, InvocationTargetException, InstantiationException
 	{
-
+		return (Executable) map.get(keyName).newInstance(parameters);
 	}
 }

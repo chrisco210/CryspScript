@@ -1,6 +1,7 @@
 package cf.rachlinski.cryspscript.runtime.exec.keyword;
 
-import cf.rachlinski.cryspscript.Control.ScriptEngine;
+import cf.rachlinski.cryspscript.control.ScriptEngine;
+import cf.rachlinski.cryspscript.control.factories.ExecutionEnvironmentFactory;
 import cf.rachlinski.cryspscript.runtime.dataStructs.stack.ParameterStack;
 import cf.rachlinski.cryspscript.runtime.dataStructs.stack.TypeStack;
 import cf.rachlinski.cryspscript.runtime.exec.method.IllegalMethodTypeException;
@@ -17,6 +18,6 @@ public class Var extends Keyword
 	@Override
 	public void run()
 	{
-		ScriptEngine.env.putVariable(((String) args.get(0).getValue()).trim(), args.get(1));
+		ExecutionEnvironmentFactory.getProvide().putVariable(((String) args.get(0).getValue()).trim(), args.get(1));
 	}
 }

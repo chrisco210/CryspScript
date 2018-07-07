@@ -1,4 +1,4 @@
-package cf.rachlinski.cryspscript.Control;
+package cf.rachlinski.cryspscript.control;
 
 import cf.rachlinski.cryspscript.prerun.parsing.line.Line;
 import cf.rachlinski.cryspscript.runtime.codeAccessors.Registers;
@@ -19,15 +19,14 @@ public class ExecutionEnvironment
 	 * Instance (method) variable maps are added after the global variable contents
 	 */
 	private LinkedList<HashMap<String, Variable<?>>> varMaps;
-	public ExecutionStack executionStack;
+	private ExecutionStack executionStack;
 
 	/**
 	 *
-	 * @param map
 	 * @param scriptPath
 	 * @throws IOException
 	 */
-	public ExecutionEnvironment(HashMap<String, Variable<?>> map, File scriptPath) throws IOException
+	public ExecutionEnvironment(File scriptPath) throws IOException
 	{
 		FileReader fos = new FileReader(scriptPath);
 		BufferedReader buff = new BufferedReader(fos);
@@ -47,7 +46,7 @@ public class ExecutionEnvironment
 		this.executionStack = new ExecutionStack(parsed);
 		this.varMaps = new LinkedList<>();
 
-		varMaps.add(map);
+		varMaps.add(new HashMap<>());
 
 		buff.close();
 	}
@@ -63,6 +62,10 @@ public class ExecutionEnvironment
 		this.executionStack = executionStack;
 	}
 
+	public ExecutionStack getExecutionStack()
+	{
+		return executionStack;
+	}
 
 	/**
 	 * Mixing naming conventions is fun
@@ -76,17 +79,6 @@ public class ExecutionEnvironment
 	}
 
 	/* VARIABLE STUFF */
-
-	/**
-	 * Put a variable on the global variable contents
-	 * @param name the name of the variable
-	 * @param value the variable to put
-	 */
-	public void putGlobalVariable(String name, Variable<?> value)
-	{
-		varMaps.getFirst().put(name, value);
-	}
-
 	/**
 	 * Put a variable on the correct variable map
 	 * @param name the name of the variable to use as the key
@@ -98,22 +90,24 @@ public class ExecutionEnvironment
 	}
 
 	/**
-	 * Attempt to retrieve a global variable from the variable contents
-	 * @param name the string name of the variable to get from the variable contents
-	 * @return
+	 * Return the variable with the corresponding name.
+	 * The method searches instance variables first, before searching for
+	 * @param name the name of the variable to get the value of
+	 * @return the variable specified by the name
 	 */
-	public Variable<?> getGlobalVariable(String name)
+	public Variable<?> getVariable(String name)
 	{
-		return varMaps.getFirst().get(name);
-	}
 
-	/**
-	 * Remove a global variable from the global variable contents
-	 * @param name name of the variable to remove
-	 */
-	public void freeGlobalVariable(String name)
-	{
-		(varMaps.getFirst()).remove(name);
+
+		for(int i = varMaps.size() - 1; i >= 0; i--)
+		{
+			if(varMaps.get(i).containsKey(name.trim()))
+			{
+				return varMaps.get(i).get(name.trim());
+			}
+		}
+		return Variable.NULL;
+
 	}
 
 	/**
@@ -139,37 +133,6 @@ public class ExecutionEnvironment
 		varMaps.remove(varMaps.size() - 1);
 	}
 
-	/**
-	 * Get a variable from the topmost instance variable contents, in other words, the Map at index 1
-	 * @param name the name of the variable
-	 * @return the variable specified
-	 */
-	public Variable<?> getInstanceVariable(String name)
-	{
-		return varMaps.get(1).get(name);
-	}
-
-
-	/**
-	 * Return the variable with the corresponding name.
-	 * The method searches instance variables first, before searching for
-	 * @param name the name of the variable to get the value of
-	 * @return the variable specified by the name
-	 */
-	public Variable<?> getVariable(String name)
-	{
-
-
-		for(int i = varMaps.size() - 1; i >= 0; i--)
-		{
-			if(varMaps.get(i).containsKey(name.trim()))
-			{
-				return varMaps.get(i).get(name.trim());
-			}
-		}
-		return Variable.NULL;
-
-	}
 
 	@Override
 	public String toString()

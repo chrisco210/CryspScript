@@ -1,20 +1,20 @@
 <commands>
-    <command name="print">
+    <command name="print" class="cf.rachlinski.cryspscript.runtime.exec.keyword.Print">
         <class>cf.rachlinski.cryspscript.runtime.exec.keyword.Print</class>
     </command>
-    <command name="if">
+    <command name="if" class="cf.rachlinski.cryspscript.runtime.exec.keyword.If">
         <class>cf.rachlinski.cryspscript.runtime.exec.keyword.If</class>
     </command>
-    <command name="fi" closureOf="if">
+    <command name="fi" closureOf="if" class="cf.rachlinski.cryspscript.runtime.exec.keyword.Fi">
         <class>cf.rachlinski.cryspscript.runtime.exec.keyword.Fi</class>
     </command>
-    <command name="while">
+    <command name="while" class="cf.rachlinski.cryspscript.runtime.exec.keyword.While">
         <class>cf.rachlinski.cryspscript.runtime.exec.keyword.While</class>
     </command>
-    <command name="endw" closureOf="while">
+    <command name="endw" closureOf="while" class="cf.rachlinski.cryspscript.runtime.exec.keyword.EndW">
         <class>cf.rachlinski.cryspscript.runtime.exec.keyword.EndW</class>
     </command>
-    <command name="var">
+    <command name="var" class="cf.rachlinski.cryspscript.runtime.exec.keyword.Var">
         <class>cf.rachlinski.cryspscript.runtime.exec.keyword.Var</class>
     </command>
 </commands>

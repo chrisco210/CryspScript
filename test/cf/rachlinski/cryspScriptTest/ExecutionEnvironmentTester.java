@@ -1,6 +1,6 @@
 package cf.rachlinski.cryspScriptTest;
 
-import cf.rachlinski.cryspscript.Control.ScriptEngine;
+import cf.rachlinski.cryspscript.control.ScriptEngine;
 
 import java.io.IOException;
 

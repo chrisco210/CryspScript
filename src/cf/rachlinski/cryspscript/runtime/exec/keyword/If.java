@@ -1,14 +1,11 @@
 package cf.rachlinski.cryspscript.runtime.exec.keyword;
 
-import cf.rachlinski.cryspscript.Control.ScriptEngine;
-import cf.rachlinski.cryspscript.runtime.codeAccessors.Registers;
-import cf.rachlinski.cryspscript.runtime.dataStructs.map.Map;
+import cf.rachlinski.cryspscript.control.ScriptEngine;
+import cf.rachlinski.cryspscript.control.factories.ExecutionEnvironmentFactory;
 import cf.rachlinski.cryspscript.runtime.dataStructs.stack.ParameterStack;
 import cf.rachlinski.cryspscript.runtime.dataStructs.stack.TypeStack;
 import cf.rachlinski.cryspscript.runtime.dataStructs.variable.Variable;
 import cf.rachlinski.cryspscript.runtime.exec.method.IllegalMethodTypeException;
-
-import java.util.HashMap;
 
 public class If extends NestingKeyword
 {
@@ -33,7 +30,7 @@ public class If extends NestingKeyword
 
 		if(!args.get(0).equals(Variable.ONE))
 		{
-			ScriptEngine.env.executionStack.getNextOccNest("fi").jumpTo();
+			ExecutionEnvironmentFactory.getProvide().getExecutionStack().getNextOccNest("fi").jumpTo();
 		}
 
 	}

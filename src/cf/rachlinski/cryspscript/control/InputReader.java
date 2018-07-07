@@ -1,4 +1,4 @@
-package cf.rachlinski.cryspscript.Control;
+package cf.rachlinski.cryspscript.control;
 
 import java.io.IOException;
 import java.io.InputStream;

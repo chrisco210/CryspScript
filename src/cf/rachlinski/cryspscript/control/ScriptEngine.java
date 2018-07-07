@@ -1,5 +1,6 @@
-package cf.rachlinski.cryspscript.Control;
+package cf.rachlinski.cryspscript.control;
 
+import cf.rachlinski.cryspscript.control.factories.ExecutionEnvironmentFactory;
 import cf.rachlinski.cryspscript.runtime.dataStructs.map.Map;
 
 import java.io.File;
@@ -13,15 +14,14 @@ import java.util.HashMap;
 public final class ScriptEngine
 {
 
-	public static ExecutionEnvironment env;
+	static ExecutionEnvironment env;
 	static
 	{
 		try
 		{
-			env = new ExecutionEnvironment(new HashMap<>(),
-				new File("C:\\Users\\chris\\Programming\\Java\\CryspScript\\test\\cf\\rachlinski\\cryspScriptTest\\ScriptTest")
-			);
-		} catch (IOException e)
+			env = ExecutionEnvironmentFactory.newInstance(new File("C:\\Users\\chris\\Programming\\Java\\CryspScript\\test\\cf\\rachlinski\\cryspScriptTest\\ScriptTest"));
+		}
+		catch (IOException e)
 		{
 			e.printStackTrace();
 		}

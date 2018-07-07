@@ -1,6 +1,6 @@
 package cf.rachlinski.cryspscript.prerun.parsing.line.parameters;
 
-import cf.rachlinski.cryspscript.Control.ScriptEngine;
+import cf.rachlinski.cryspscript.control.ScriptEngine;
 import cf.rachlinski.cryspscript.runtime.dataStructs.variable.Variable;
 
 /**
