@@ -1,6 +1,7 @@
 package cf.rachlinski.cryspscript.prerun.parsing.line.parameters;
 
 import cf.rachlinski.cryspscript.control.ScriptEngine;
+import cf.rachlinski.cryspscript.control.factories.ExecutionEnvironmentFactory;
 import cf.rachlinski.cryspscript.runtime.dataStructs.variable.Variable;
 
 /**
@@ -44,7 +45,7 @@ public class PrecondensedParameter
 		switch(evaluateType(value))
 		{
 		case VARIABLE_TYPE:
-			return ScriptEngine.env.getVariable(value.substring(1).trim());
+			return ExecutionEnvironmentFactory.getProvide().getVariable(value.substring(1).trim());
 		case STR_TYPE:
 			value = value.replace('\"', '\u0000');
 			return new Variable<String>(value);

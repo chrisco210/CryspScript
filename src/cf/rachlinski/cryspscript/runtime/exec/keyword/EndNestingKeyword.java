@@ -1,6 +1,7 @@
 package cf.rachlinski.cryspscript.runtime.exec.keyword;
 
 import cf.rachlinski.cryspscript.control.ScriptEngine;
+import cf.rachlinski.cryspscript.control.factories.ExecutionEnvironmentFactory;
 import cf.rachlinski.cryspscript.runtime.codeAccessors.Registers;
 import cf.rachlinski.cryspscript.runtime.dataStructs.stack.ParameterStack;
 import cf.rachlinski.cryspscript.runtime.dataStructs.stack.TypeStack;
@@ -35,7 +36,7 @@ public abstract class EndNestingKeyword extends Keyword
 
 	private void decreaseDepth()
 	{
-		ScriptEngine.env.freeInstanceMap();
+		ExecutionEnvironmentFactory.getProvide().freeInstanceMap();
 		Registers.r3.dec();
 	}
 }

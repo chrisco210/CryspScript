@@ -1,6 +1,7 @@
 package cf.rachlinski.cryspscript.runtime.exec.keyword;
 
 import cf.rachlinski.cryspscript.control.ScriptEngine;
+import cf.rachlinski.cryspscript.control.factories.ExecutionEnvironmentFactory;
 import cf.rachlinski.cryspscript.runtime.codeAccessors.Registers;
 import cf.rachlinski.cryspscript.runtime.dataStructs.stack.ParameterStack;
 import cf.rachlinski.cryspscript.runtime.dataStructs.stack.TypeStack;
@@ -39,7 +40,7 @@ public abstract class NestingKeyword extends Keyword
 	private void increaseDepth()
 	{
 		//Add nesting variable contents to the variable maps
-		ScriptEngine.env.createInstanceVarMap(new HashMap<>());
+		ExecutionEnvironmentFactory.getProvide().createInstanceVarMap(new HashMap<>());
 
 		//Increment nesting depth
 		Registers.r3.inc();
