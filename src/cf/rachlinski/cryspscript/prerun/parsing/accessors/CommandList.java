@@ -11,23 +11,40 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Parameter;
 import java.util.Map;
 
 /**
- * Object representation of the command xml
+ * Object representation of the keyword name to fully qualified class name association based on
+ * a command xml or included annotations
  */
 public class CommandList
 {
 	private Map<String, Constructor<?>> map;
 
-	public CommandList() throws ParserConfigurationException, IOException, SAXException
+	/**
+	 * Construct a CommandList using annotations included in the classes
+	 */
+	public CommandList()
+	{
+		//TODO
+	}
+
+	/**
+	 * Construct a CommandList given an input stream for the xml file
+	 * <br>use of{@code @Runnable} annotation is preferable to xml files
+	 * @throws ParserConfigurationException
+	 * @throws IOException
+	 * @throws SAXException
+	 */
+	public CommandList(InputStream xmlStream) throws ParserConfigurationException, IOException, SAXException
 	{
 		Document document = DocumentBuilderFactory.newInstance()
 				.newDocumentBuilder()
-				.parse(CommandList.class.getResourceAsStream("/commands.xml"));
+				.parse(xmlStream);
 
 		//List of child nodes of the document
 		NodeList nodeList = document.getChildNodes();

@@ -5,16 +5,16 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
+
 /**
  * Add this annotation to a class describing a keyword that implements the{@code Keyword} class
  */
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
 public @interface Runnable
 {
 	/**
 	 * The call name of the keyword
-	 * @return
 	 */
-	public String value() default "";
+	String value() default "";
 }

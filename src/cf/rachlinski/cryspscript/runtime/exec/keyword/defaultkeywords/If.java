@@ -6,8 +6,10 @@ import cf.rachlinski.cryspscript.runtime.dataStructs.stack.ParameterStack;
 import cf.rachlinski.cryspscript.runtime.dataStructs.stack.TypeStack;
 import cf.rachlinski.cryspscript.runtime.dataStructs.variable.Variable;
 import cf.rachlinski.cryspscript.runtime.exec.keyword.NestingKeyword;
+import cf.rachlinski.cryspscript.runtime.exec.keyword.Runnable;
 import cf.rachlinski.cryspscript.runtime.exec.method.IllegalMethodTypeException;
 
+@Runnable("if")
 public class If extends NestingKeyword
 {
 

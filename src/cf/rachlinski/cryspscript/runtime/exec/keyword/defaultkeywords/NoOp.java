@@ -3,12 +3,12 @@ package cf.rachlinski.cryspscript.runtime.exec.keyword.defaultkeywords;
 import cf.rachlinski.cryspscript.runtime.dataStructs.stack.ParameterStack;
 import cf.rachlinski.cryspscript.runtime.exec.keyword.Keyword;
 import cf.rachlinski.cryspscript.runtime.exec.keyword.Runnable;
-import cf.rachlinski.cryspscript.runtime.exec.method.IllegalMethodTypeException;
 
-@Runnable("endw")
-public class EndW extends Keyword
+@Runnable("nop")
+public class NoOp extends Keyword
 {
-	public EndW(ParameterStack args) throws IllegalMethodTypeException
+
+	public NoOp(ParameterStack args)
 	{
 		super(args);
 	}
@@ -16,6 +16,6 @@ public class EndW extends Keyword
 	@Override
 	public void run()
 	{
-		return; /*This methods intentional does nothing*/
+		return;
 	}
 }

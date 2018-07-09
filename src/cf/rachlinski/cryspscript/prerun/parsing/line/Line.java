@@ -1,12 +1,14 @@
 package cf.rachlinski.cryspscript.prerun.parsing.line;
 
 import cf.rachlinski.cryspscript.prerun.parsing.Except.IllegalKeywordException;
+import cf.rachlinski.cryspscript.prerun.parsing.accessors.CommandList;
 import cf.rachlinski.cryspscript.prerun.parsing.accessors.CommandXML;
 import cf.rachlinski.cryspscript.prerun.parsing.line.parameters.PrecondensedParameter;
 import cf.rachlinski.cryspscript.runtime.codeAccessors.Registers;
 import cf.rachlinski.cryspscript.runtime.dataStructs.stack.ParameterStack;
 import cf.rachlinski.cryspscript.runtime.dataStructs.variable.Variable;
 import cf.rachlinski.cryspscript.runtime.exec.Executable;
+import cf.rachlinski.cryspscript.runtime.exec.keyword.defaultkeywords.NoOp;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -20,6 +22,8 @@ import javax.xml.xpath.XPathFactory;
  */
 public class Line
 {
+	private static CommandList commandList = new CommandList();
+
 	/**
 	 * Constant for the main function type of keywordText
 	 */
@@ -120,36 +124,31 @@ public class Line
 
 		String className = "noclassdef";
 
+		Variable<?>[] variables = new Variable<?>[parameters.length];
+
+		for(int i = 0; i < parameters.length; i++)
+		{
+			variables[i] = parameters[i].valueOf();
+		}
+
 		try
 		{
-			className =  (String) XPathFactory.newInstance().newXPath().compile(
-					"/commands/command[@name='" + keywordText + "']/class").evaluate(CommandXML.COMMANDS_XML, XPathConstants.STRING
-			);
+			return commandList.getInstance(keywordText, new ParameterStack(variables));
 		}
-		catch (XPathExpressionException e)
+		catch (IllegalAccessException e)
+		{
+			e.printStackTrace();
+		}
+		catch (InvocationTargetException e)
+		{
+			e.printStackTrace();
+		}
+		catch (InstantiationException e)
 		{
 			e.printStackTrace();
 		}
 
-
-		try {
-
-			Constructor<?> con = Class.forName(className).getConstructor(ParameterStack.class);
-			
-			Variable<?>[] v = new Variable<?>[parameters.length];
-			for(int i = 0; i < v.length; i++)
-			{
-				v[i] = parameters[i].valueOf();
-			}
-			
-			return (Executable) con.newInstance(new ParameterStack(v));
-		}
-		catch (SecurityException | NoSuchMethodException
-				| ClassNotFoundException | IllegalArgumentException | InstantiationException | IllegalAccessException | InvocationTargetException e)
-		{
-			e.printStackTrace();
-			throw new IllegalKeywordException(this, Registers.r1.getValue());
-		}
+		return new NoOp(new ParameterStack(new Variable<?>[0]));
 	}
 
 	@Override

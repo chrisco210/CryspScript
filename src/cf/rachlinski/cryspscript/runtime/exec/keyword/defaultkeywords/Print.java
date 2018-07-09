@@ -6,6 +6,7 @@ import cf.rachlinski.cryspscript.runtime.dataStructs.stack.TypeStack;
 import cf.rachlinski.cryspscript.runtime.dataStructs.variable.Variable;
 import cf.rachlinski.cryspscript.runtime.exec.Executable;
 import cf.rachlinski.cryspscript.runtime.exec.keyword.Keyword;
+import cf.rachlinski.cryspscript.runtime.exec.keyword.Runnable;
 
 import java.lang.reflect.Type;
 
@@ -14,6 +15,7 @@ import java.lang.reflect.Type;
  * Syntax <br>
  * print {to_print}
  */
+@Runnable("print")
 public final class Print extends Keyword
 {
 	private static final TypeStack EXPECTED_TYPES = new TypeStack(new Class<?>[] {String.class});
