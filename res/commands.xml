@@ -1,20 +1,20 @@
 <commands>
-    <command name="print" class="cf.rachlinski.cryspscript.runtime.exec.keyword.Print">
-        <class>cf.rachlinski.cryspscript.runtime.exec.keyword.Print</class>
+    <command name="print" class="cf.rachlinski.cryspscript.runtime.exec.keyword.defaultkeywords.Print">
+        <class>cf.rachlinski.cryspscript.runtime.exec.keyword.defaultkeywords.Print</class>
     </command>
-    <command name="if" class="cf.rachlinski.cryspscript.runtime.exec.keyword.If">
-        <class>cf.rachlinski.cryspscript.runtime.exec.keyword.If</class>
+    <command name="if" class="cf.rachlinski.cryspscript.runtime.exec.keyword.defaultkeywords.If">
+        <class>cf.rachlinski.cryspscript.runtime.exec.keyword.defaultkeywords.If</class>
     </command>
-    <command name="fi" closureOf="if" class="cf.rachlinski.cryspscript.runtime.exec.keyword.Fi">
-        <class>cf.rachlinski.cryspscript.runtime.exec.keyword.Fi</class>
+    <command name="fi" closureOf="if" class="cf.rachlinski.cryspscript.runtime.exec.keyword.defaultkeywords.Fi">
+        <class>cf.rachlinski.cryspscript.runtime.exec.keyword.defaultkeywords.Fi</class>
     </command>
-    <command name="while" class="cf.rachlinski.cryspscript.runtime.exec.keyword.While">
-        <class>cf.rachlinski.cryspscript.runtime.exec.keyword.While</class>
+    <command name="while" class="cf.rachlinski.cryspscript.runtime.exec.keyword.defaultkeywords.While">
+        <class>cf.rachlinski.cryspscript.runtime.exec.keyword.defaultkeywords.While</class>
     </command>
-    <command name="endw" closureOf="while" class="cf.rachlinski.cryspscript.runtime.exec.keyword.EndW">
-        <class>cf.rachlinski.cryspscript.runtime.exec.keyword.EndW</class>
+    <command name="endw" closureOf="while" class="cf.rachlinski.cryspscript.runtime.exec.keyword.defaultkeywords.EndW">
+        <class>cf.rachlinski.cryspscript.runtime.exec.keyword.defaultkeywords.EndW</class>
     </command>
-    <command name="var" class="cf.rachlinski.cryspscript.runtime.exec.keyword.Var">
-        <class>cf.rachlinski.cryspscript.runtime.exec.keyword.Var</class>
+    <command name="var" class="cf.rachlinski.cryspscript.runtime.exec.keyword.defaultkeywords.Var">
+        <class>cf.rachlinski.cryspscript.runtime.exec.keyword.defaultkeywords.Var</class>
     </command>
 </commands>

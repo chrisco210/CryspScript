@@ -72,4 +72,10 @@ public abstract class Keyword implements Executable
 	{
 		return against.compareTypes(args);
 	}
+
+	@Override
+	public String toString()
+	{
+		return this.getClass().getAnnotation(Runnable.class) + args.toString();
+	}
 }

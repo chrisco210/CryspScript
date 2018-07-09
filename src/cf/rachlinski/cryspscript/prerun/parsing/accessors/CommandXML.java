@@ -5,7 +5,7 @@ import org.w3c.dom.Document;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 /**
- *
+ * @deprecated
  */
 public class CommandXML
 {
