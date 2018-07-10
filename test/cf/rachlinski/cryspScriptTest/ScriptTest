@@ -1,7 +1,5 @@
-var{"test", 123}
-if{1}
-var{"test", 321}
-print{$test}
-fi{}
-
-print{$test}
+print{"start"}
+print{"next"}
+jmp{3}
+print{"skip"}
+print{"jumped to 5"}

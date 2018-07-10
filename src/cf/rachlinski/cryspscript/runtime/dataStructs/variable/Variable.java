@@ -8,6 +8,11 @@ public class Variable<E>
 {
 	public static final Variable<Integer> NULL = new Variable<>(null);
 	public static final Variable<Integer> ONE = new Variable<>(1);
+	public static final Variable<Integer> ZERO = new Variable<>(0);
+	public static final Variable<Boolean> TRUE = new Variable<>(true);
+	public static final Variable<Boolean> FALSE = new Variable<>(false);
+	public static final Variable<String> EMPTY_STR = new Variable<>("");
+
 	/**
 	 * The value of the variable
 	 */

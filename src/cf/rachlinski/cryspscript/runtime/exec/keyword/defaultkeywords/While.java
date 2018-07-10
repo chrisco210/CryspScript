@@ -22,9 +22,11 @@ public class While extends Keyword
 	@Override
 	public void run()
 	{
-		if(!args.get(0).equals(Variable.ONE))
+		if(!args.get(0).equals(Variable.ONE	))
 		{
 			ExecutionEnvironmentFactory.getProvide().getExecutionStack().getNextOccNest("endw").jumpTo();
 		}
+
+
 	}
 }

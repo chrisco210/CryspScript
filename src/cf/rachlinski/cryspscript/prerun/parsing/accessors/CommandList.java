@@ -2,6 +2,8 @@ package cf.rachlinski.cryspscript.prerun.parsing.accessors;
 
 import cf.rachlinski.cryspscript.runtime.dataStructs.stack.ParameterStack;
 import cf.rachlinski.cryspscript.runtime.exec.Executable;
+import cf.rachlinski.cryspscript.runtime.exec.keyword.Runnable;
+import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -15,6 +17,7 @@ import java.io.InputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Parameter;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -30,7 +33,22 @@ public class CommandList
 	 */
 	public CommandList()
 	{
-		//TODO
+		map = new HashMap<>();
+
+		FastClasspathScanner fcs = new FastClasspathScanner();
+		fcs.matchClassesWithAnnotation(Runnable.class, (match) -> {
+			try
+			{
+				map.put(
+						match.getAnnotation(Runnable.class).value(),
+						match.getConstructor(ParameterStack.class)
+				);
+			} catch (NoSuchMethodException e)
+			{
+				e.printStackTrace();		//TODO
+			}
+		});
+		fcs.scan();
 	}
 
 	/**
