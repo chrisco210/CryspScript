@@ -1,5 +1,5 @@
 print{"start"}
 print{"next"}
-jmp{3}
+jmp{5}
 print{"skip"}
 print{"jumped to 5"}

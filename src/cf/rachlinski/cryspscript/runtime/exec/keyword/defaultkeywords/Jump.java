@@ -18,6 +18,6 @@ public class Jump extends Keyword
 	@Override
 	public void run()
 	{
-		new InstructionPointer((Integer) args.get(0).getValue()).jumpTo();
+		new InstructionPointer((Integer) args.get(0).getValue() - 2).jumpTo();
 	}
 }
