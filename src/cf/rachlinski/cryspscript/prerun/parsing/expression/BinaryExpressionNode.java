@@ -15,6 +15,11 @@ class BinaryExpressionNode<E>
 		this.value = value;
 	}
 
+	public boolean isOperator()
+	{
+		return value instanceof Operator;
+	}
+
 	public E getValue()
 	{
 		return value;

@@ -79,7 +79,7 @@ public class PrecondensedParameter
 	 * @param text the text to evaluate
 	 * @return an integer code corresponding to the predicted type of the string
 	 */
-	private int evaluateType(String text)
+	protected static int evaluateType(String text)
 	{
 		if(text.length() > 0)
 		{

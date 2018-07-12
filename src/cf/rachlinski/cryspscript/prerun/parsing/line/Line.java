@@ -113,6 +113,8 @@ public class Line
 		return keywordText;
 	}
 
+
+
 	/**
 	 * Converts a line into an Executable command.  To do this it first evaluates variables from the Variable stack,
 	 * then evaluates any functions.  If the line is only a routine, the routine is executed, otherwise, the keywordText
@@ -135,7 +137,7 @@ public class Line
 		{
 			return commandList.getInstance(keywordText, new ParameterStack(variables));
 		}
-		catch (IllegalAccessException e)
+		catch (IllegalAccessException e)	//TODO
 		{
 			e.printStackTrace();
 		}
