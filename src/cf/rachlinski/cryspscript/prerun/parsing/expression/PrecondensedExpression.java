@@ -28,9 +28,26 @@ public class PrecondensedExpression extends PrecondensedParameter
 
 	}
 
-	private Object operate(BinaryExpressionNode<?> opNode)
+	private Object getTotalRec(BinaryExpressionNode currentNode)
 	{
-		if()
+		if(currentNode.isOperator())
+		{
+			return ((Operator) currentNode.getValue())
+					.operate(
+							getTotalRec(currentNode.getLeft()),
+							getTotalRec(currentNode.getRight())
+					);
+		}
+		else if(currentNode.childCount() == 0)
+		{
+			return currentNode.getValue();
+		}
+		else		//This case should never be triggered
+		{
+			System.err.println("WARN: Non-operator node has children. " +
+					"This should not happen, and is most likely an error");
+			return 0;
+		}
 	}
 
 	private static Class<?>[] TYPE_HIERARCHY;
