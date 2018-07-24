@@ -11,12 +11,42 @@ public class Number
 	//True if the number should be treated as an integer
 	private boolean isInteger;
 
+	public static final char[] OP_HIERARCHY = new char[] {'*', '/', '%', '-', '+'};
+	public static final char[] OP_HIERARCHY_REV = new char[] {'+', '-', '%', '/', '*'};
+	public static final String OP_HIERARCHY_STR = "*/%-+";
+
+	/**
+	 * Construct a Number based on a string
+	 * @param value the string
+	 */
+	public Number(String value)
+	{
+		if(value.contains("."))
+		{
+			isInteger = false;
+			this.value = Double.parseDouble(value);
+		}
+		else
+		{
+			isInteger = true;
+			this.value = Integer.parseInt(value);
+		}
+	}
+
+	/**
+	 * Construct a number based on a double
+	 * @param value the double value
+	 */
 	public Number(double value)
 	{
 		this.isInteger = true;
 		this.value = value;
 	}
 
+	/**
+	 * Construct a number based on an integer
+	 * @param value the int value
+	 */
 	public Number(int value)
 	{
 		isInteger = true;
@@ -83,6 +113,16 @@ public class Number
 		return new Number(value);
 	}
 
+	@Override
+	public String toString()
+	{
+		if(isInteger)
+		{
+			return this.intValue() + "";
+		}
+		return this.doubleValue() + "";
+	}
+
 	public static final class RoundingMode
 	{
 		/**
@@ -124,6 +164,11 @@ public class Number
 		public static final int NEAREST_INT_UP = 3;
 	}
 
+	/**
+	 * Return the value of a number as either an integer or a numbers
+	 * @param num
+	 * @return
+	 */
 	public static Object valueOf(Number num)
 	{
 		if(num.isInteger())
@@ -134,6 +179,12 @@ public class Number
 		return num.doubleValue();
 	}
 
+	/**
+	 * Add two numbers and return a new numebr
+	 * @param num1
+	 * @param num2
+	 * @return
+	 */
 	public static Number add(Number num1, Number num2)
 	{
 		if(!num1.isInteger() || !num2.isInteger())

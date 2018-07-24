@@ -1,6 +1,6 @@
 package cf.rachlinski.cryspscript.prerun.parsing.line.parameters;
 
-import cf.rachlinski.cryspscript.control.ScriptEngine;
+import cf.rachlinski.cryspscript.prerun.parsing.operation.Number;
 import cf.rachlinski.cryspscript.control.factories.ExecutionEnvironmentFactory;
 import cf.rachlinski.cryspscript.runtime.dataStructs.variable.Variable;
 
@@ -12,10 +12,17 @@ public class PrecondensedParameter
 {
 	private static final int STR_TYPE = 0;
 	private static final int CHR_TYPE = 1;
+	/**
+	 * @deprecated use number
+	 */
 	private static final int INT_TYPE = 2;
+	/**
+	 * @deprecated use number
+	 */
 	private static final int DEC_TYPE = 3;
 	private static final int NULL_TYPE = 4;
 	public static final int VARIABLE_TYPE = 5;
+	public static final int NUMBER_TYPE = 6;
 	private String value;
 
 	/**
@@ -58,6 +65,8 @@ public class PrecondensedParameter
 		case DEC_TYPE:
 			//TODO resolve operations
 			return new Variable<Double>(Double.parseDouble(value));
+		case NUMBER_TYPE:
+			return new Variable<Number>(new Number(value));
 		case NULL_TYPE:
 			return Variable.NULL;
 		default:
@@ -89,9 +98,7 @@ public class PrecondensedParameter
 				return STR_TYPE;
 			else if(text.charAt(0) == '\'')
 				return CHR_TYPE;
-			else if(text.contains("."))
-				return DEC_TYPE;
-			return INT_TYPE;
+			return NUMBER_TYPE;
 		}
 		return NULL_TYPE;
 	}
