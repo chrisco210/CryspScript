@@ -5,6 +5,7 @@ package cf.rachlinski.cryspscript.prerun.parsing.operation;
  */
 public class Number
 {
+	//TODO should this use doubles, or different data type
 	private double value;
 
 	//True if the number should be treated as an integer
@@ -139,25 +140,48 @@ public class Number
 		{
 			return new Number(num1.value + num1.value);
 		}
+
+		return new Number((int) (num1.value + num2.value));
+
 	}
 
 	public static Number sub(Number num1, Number num2)
 	{
+		if(!num1.isInteger() || !num2.isInteger())
+		{
+			return new Number(num1.value - num1.value);
+		}
 
+		return new Number((int) (num1.value - num2.value));
 	}
 
 	public static Number mul(Number num1, Number num2)
 	{
+		if(!num1.isInteger() || !num2.isInteger())
+		{
+			return new Number(num1.value * num1.value);
+		}
 
+		return new Number((int) (num1.value * num2.value));
 	}
 
 	public static Number div(Number num1, Number num2)
 	{
+		if(!num1.isInteger() || !num2.isInteger())
+		{
+			return new Number(num1.value / num1.value);
+		}
 
+		return new Number((int) (num1.value / num2.value));
 	}
 
 	public static Number mod(Number num1, Number num2)
 	{
+		if(!num1.isInteger() || !num2.isInteger())
+		{
+			return new Number(num1.value % num1.value);
+		}
 
+		return new Number((int) (num1.value % num2.value));
 	}
 }

@@ -2,14 +2,33 @@ package cf.rachlinski.cryspscript.prerun.parsing.operation;
 
 public class BinaryExpressionTree
 {
+	private Node<?> rootNode;
+
+	public BinaryExpressionTree(String tree)
 
 
-	class Node
+	public class Node<E>
 	{
 		private Node left;
 		private Node right;
 
 		private Node parent;
+
+		protected E value;
+
+		public Node(E value, Node parent)
+		{
+			this.value = value;
+			this.parent = parent;
+		}
+
+		/**
+		 * return the value of the node
+		 */
+		public E getValue()
+		{
+			return value;
+		}
 
 		/**
 		 * Return the parent node of this node
@@ -63,13 +82,32 @@ public class BinaryExpressionTree
 		}
 	}
 
-	class ValueNode extends Node
+	public class ValueNode extends Node<Number>
 	{
-		private
+
+		public ValueNode(Number value, Node parent)
+		{
+			super(value, parent);
+		}
 	}
 
-	class OperatorNode extends Node
+	public class OperatorNode extends Node<Operator>
 	{
 
+		public OperatorNode(Operator value, Node parent)
+		{
+			super(value, parent);
+		}
+	}
+
+	public class VariableNode extends Node<>
+	{
+
+		public VariableNode(Object value, Node parent)
+		{
+			super(value, parent);
+		}
+
+		public
 	}
 }
