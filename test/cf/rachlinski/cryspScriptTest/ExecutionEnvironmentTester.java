@@ -10,6 +10,6 @@ public class ExecutionEnvironmentTester
 {
 	public static void main(String[] args) throws IOException
 	{
-		ExecutionEnvironmentFactory.newInstance(new File("C:\\Users\\chris\\Programming\\Java\\CryspScript\\test\\cf\\rachlinski\\cryspScriptTest\\ScriptTest")).EXECUTE_PROGRAM();
+		ExecutionEnvironmentFactory.newInstance(new File("C:\\Users\\christopher\\Programming\\Java\\CryspScript\\test\\cf\\rachlinski\\cryspScriptTest\\ScriptTest")).EXECUTE_PROGRAM();
 	}
 }

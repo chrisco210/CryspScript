@@ -1,5 +1,1 @@
-print{"start"}
-print{"next"}
-jmp{5}
-print{"skip"}
-print{"jumped to 5"}
+print{""test""}

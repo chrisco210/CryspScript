@@ -3,6 +3,7 @@ package cf.rachlinski.cryspscript.runtime.dataStructs.stack;
 import cf.rachlinski.cryspscript.prerun.parsing.line.Line;
 import cf.rachlinski.cryspscript.runtime.codeAccessors.Registers;
 import cf.rachlinski.cryspscript.runtime.dataStructs.variable.InstructionPointer;
+import cf.rachlinski.cryspscript.runtime.dataStructs.variable.Register;
 import cf.rachlinski.cryspscript.runtime.exec.keyword.UnmatchedNestException;
 
 public class ExecutionStack extends Stack<Line>
@@ -70,6 +71,9 @@ public class ExecutionStack extends Stack<Line>
 	{
 		if(Registers.r1.getValue() >= contents.length)
 			return;
+
+		System.out.println("Contents:" + contents[Registers.r1.getValue()]);
+		System.out.println("Contents:" + contents[Registers.r1.getValue()].parse());
 		contents[Registers.r1.getValue()].parse().run();
 		Registers.r1.inc();
 	}
